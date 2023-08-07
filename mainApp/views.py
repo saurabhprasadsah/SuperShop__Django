@@ -47,3 +47,5 @@ def singlePage(Request):
     return render(Request,"single-product.html")
 
 
+
+#hello wolrd
