@@ -1,0 +1,93 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block title %}
+<title> SuperShop | Cart</title>
+{% endblock %}
+
+{% block body %}
+<!-- breadcrumb part start-->
+<section class="breadcrumb_part">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breadcrumb_iner">
+                    <h2>signup</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- breadcrumb part end-->
+
+<!--================login_part Area =================-->
+<section class="login_part p-3">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 col-md-6">
+                <div class="login_part_text text-center w-100">
+                    <div class="login_part_text_iner">
+                        <h2>Already have a Account?</h2>
+                        <p>Please login To Your Account </p>
+                        <a href="{% url 'login' %}" class="btn_3">Login</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6">
+                <div class="login_part_form">
+                    <div class="login_part_form_iner">
+                        <h3 class="text-center">Welcome Back to Our shop!</h3>
+                        <h5 class="text-center">Please Provide some basic details to create Account!</h5>
+                        {% if messages %}
+                        {% for m in messages %}
+                        <div class="alert alert-danger text-center alert-dismissible fade show" role="alert">
+                            {{m}}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        {% endfor %}
+                        {% endif %}
+                        <form class="row contact_form" action="" method="post" novalidate="novalidate">
+                            {% csrf_token %}
+                            <div class="row">
+                                <div class="col-md-6 form-group p_star">
+                                    <input type="text" class="form-control" id="name" name="name"
+                                        placeholder="Full Name">
+                                </div>
+                                <div class="col-md-6 form-group p_star">
+                                    <input type="text" class="form-control" id="username" name="username"
+                                        placeholder="Username">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 form-group p_star">
+                                    <input type="email" class="form-control" id="email" name="Email Address"
+                                        placeholder="Email Address">
+                                </div>
+                                <div class="col-md-6 form-group p_star">
+                                    <input type="text" class="form-control" id="phone" name="Phone Number"
+                                        placeholder="PhoneNumber">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 form-group p_star">
+                                    <input type="password" class="form-control" id="password" name="password"
+                                        placeholder="Password">
+                                </div>
+                                <div class="col-md-6 form-group p_star">
+                                    <input type="password" class="form-control" id="cpassword" name="Confirm Password"
+                                        placeholder="ConfirmPassword">
+                                </div>
+                            </div>
+                            <div class="col-md-12 form-group">
+                                <button type="submit" value="submit" class="btn_3"> Signup </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

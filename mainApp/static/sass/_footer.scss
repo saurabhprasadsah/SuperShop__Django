@@ -1,0 +1,99 @@
+/**********************footer part css*******************/
+.footer_part {
+	.footer_iner{
+		padding: 120px 0;
+		@media #{$tab}{
+			padding: 70px 0;
+		}
+		@media #{$medium_device}{
+			padding: 100px 0;
+		}
+		.footer_menu{
+			display: flex;
+			align-items: center;
+			@media #{$tab}{
+				display: block;
+			}
+		}
+		.footer_logo{
+			a{
+				display: inline-block;
+				margin-right: 45px;
+				@media #{$medium_device}{
+					margin-right: 10px;
+				}
+			}
+		}
+		.footer_menu_item{
+			@media #{$tab}{
+				margin-top: 15px;
+			}
+			a{
+				display: inline-block;
+				color: $heading_color;
+				font-size: 16px;
+				padding: 0 17px;
+				@media #{$tab}{
+					padding: 0 15px 0 0;
+				}
+				@media #{$medium_device}{
+					padding: 0 7px;
+				}
+				&:hover{
+					color: #E4D3DF;
+				}
+			}
+		}
+	}
+	.social_icon{
+		text-align: right;
+		@media #{$tab}{
+			text-align: left;
+			margin-top: 25px;
+		}
+		a{
+			height: 45px;
+			width: 45px;
+			border-radius: 50%;
+			background-color: $heading_color;
+			line-height: 45px;
+			color: $white;
+			display: inline-block;
+			text-align: center;
+			&:hover{
+				background-color: #E4D3DF;
+			}
+		}
+	}
+	
+	.copyright_part{
+		background-color: #F4EDF2;
+		padding: 30px 0px;
+		.copyright_text{
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			@media #{$tab}{
+				display: block;
+			}
+			p{
+				a{
+					color: $heading_color;
+				}
+			}
+		}
+		.copyright_link{
+			@media #{$tab}{
+				margin-top: 20px;
+			}
+			a{
+				color: $heading_color;
+				margin-left: 40px;
+				@media #{$tab}{
+					margin-left: auto;
+					margin-right: 25px;
+				}
+			}
+		}
+	}
+}
