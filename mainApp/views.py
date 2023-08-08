@@ -1,5 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render,HttpResponseRedirect
 from django.contrib.messages import success,error
+from django.contrib.auth.models import User
 from .models import *
 
 # Create your views here.
@@ -29,19 +30,25 @@ def loginPage(Request):
 
 
 def signupPage(Request):
-     if(Request.method =="POST"):
+    if(Request.method == "POST"):
         password = Request.POST.get("password")     
         cpassword = Request.POST.get("cpassword")
         if(password==cpassword):
-            username = Request.POST.get("username")
             email = Request.POST.get("email")
-
+            username = Request.POST.get("username")
+            User.create(username=username,email=email,password=password)
             name = Request.POST.get("name")
             phone = Request.POST.get("phone")
+            b = Buyer()
+            b.name = name  
+            b.email = email
+            b.username = username
+            b.phone= phone
+            b.save()
+            return HttpResponseRedirect("/login")
         else:
-            error(Request,"Password and cofirm Password Doesn't Matched!!!")   
-            
-     return render(Request,"signup.html")
+            error(Request,"Password and cofirm Password Doesn't Matched!!!")        
+    return render(Request,"signup.html")
 
 def singlePage(Request):
     return render(Request,"single-product.html")
