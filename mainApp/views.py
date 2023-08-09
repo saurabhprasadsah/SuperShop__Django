@@ -28,7 +28,7 @@ def contactPage(Request):
 def loginPage(Request):
     return render(Request,"login.html")
 
-
+#signup page
 def signupPage(Request):
     if(Request.method == "POST"):
         password = Request.POST.get("password")     
@@ -36,9 +36,11 @@ def signupPage(Request):
         if(password==cpassword):
             email = Request.POST.get("email")
             username = Request.POST.get("username")
+
             User.create(username=username,email=email,password=password)
             name = Request.POST.get("name")
             phone = Request.POST.get("phone")
+
             b = Buyer()
             b.name = name  
             b.email = email
