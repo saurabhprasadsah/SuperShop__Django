@@ -60,10 +60,10 @@
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown_1">
                                         <a class="dropdown-item" href="{% url 'shop' %}"> Shop</a>
                                         <a class="dropdown-item" href="{% url 'single-Page' %}">Single Product</a>
-                                        
+
                                     </div>
                                 </li>
-                               <!-- <li class="nav-item dropdown">
+                                <!-- <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="blog.html" id="navbarDropdown_3"
                                         role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         pages
@@ -141,9 +141,8 @@
             </div>
         </div>
         <div class="banner_img">
-            <img src="{% static 'img/banner.png' %}" alt="#" class="img-fluid">
-            <img src="{% static 'img/banner_pattern.png' %} " alt="#" class="pattern_img img-fluid">
-        </div>
+            <img src="{% static 'banner/banner1.jpg' %}" alt="#" class="img-fluid">
+                </div>
     </section>
     <!-- banner part start-->
 
@@ -156,18 +155,19 @@
                         <div class="row align-items-center justify-content-between">
                             <div class="col-lg-6 col-sm-6">
                                 <div class="single_product_img">
-                                    <img src="{% static 'img/single_product_1.png' %}" class="img-fluid" alt="#">
-                                    <img src="{% static 'img/product_overlay.png' %}" alt="#" class="product_overlay img-fluid">
+                                    <img src="{% static 'banner/banner2.jpg' %}" style="height: 400px;" class="img-fluid" alt="#">
+                                    <img src="{% static 'img/product_overlay.png' %}" alt="#"
+                                        class="product_overlay img-fluid">
                                 </div>
                             </div>
                             <div class="col-lg-5 col-sm-6">
                                 <div class="single_product_content">
                                     <h5>Started From &#8377;500</h5>
-                                    <h2><a href="single-product.html">Women Latest 
-                                        Fashion </a></h2>
+                                    <h2><a href="single-product.html">Women Latest
+                                            Fashion </a></h2>
                                     <p>Jeans, Tshirt, Shirt, Trouser And More of Many Big Brands like
-                                         Adidas,Mufti etc</p>
-                                    <a href="{% url 'shop' %}" class="btn_3">Explore Now</a>
+                                        Adidas,Mufti etc</p>
+                                    <a href="{% url 'shop' %}" class="btn_3">Shop Now</a>
                                 </div>
                             </div>
                         </div>
@@ -177,15 +177,16 @@
                             <div class="col-lg-6 col-sm-6">
                                 <div class="single_product_img">
                                     <img src="{% static 'img/single_product_2.png' %}" class="img-fluid" alt="#">
-                                    <img src="{% static 'img/product_overlay.png' %}" alt="#" class="product_overlay img-fluid">
+                                    <img src="{% static 'img/product_overlay.png' %}" alt="#"
+                                        class="product_overlay img-fluid">
                                 </div>
                             </div>
                             <div class="col-lg-5 col-sm-6">
                                 <div class="single_product_content">
                                     <h5>Started From &#8377;500</h5>
-                                    <h2> <a href="single-product.html">Printed memory foam 
-                                        brief modern throw 
-                                        pillow case</a> </h2>
+                                    <h2> <a href="single-product.html">Printed memory foam
+                                            brief modern throw
+                                            pillow case</a> </h2>
                                     <a href="product_list.html" class="btn_3">Explore Now</a>
                                 </div>
                             </div>
@@ -196,14 +197,15 @@
                             <div class="col-lg-6 col-sm-6">
                                 <div class="single_product_img">
                                     <img src="{% static 'img/single_product_3.png' %}" class="img-fluid" alt="#">
-                                    <img src="{% static 'img/product_overlay.png' %}" alt="#" class="product_overlay img-fluid">
+                                    <img src="{% static 'img/product_overlay.png' %}" alt="#"
+                                        class="product_overlay img-fluid">
                                 </div>
                             </div>
                             <div class="col-lg-5 col-sm-6">
                                 <div class="single_product_content">
                                     <h5>Started From &#8377;500</h5>
-                                    <h2> <a href="single-product.html">Printed memory foam 
-                                            brief modern throw 
+                                    <h2> <a href="single-product.html">Printed memory foam
+                                            brief modern throw
                                             pillow case</a> </h2>
                                     <a href="product_list.html" class="btn_3">Explore Now</a>
                                 </div>
@@ -234,7 +236,7 @@
                             <img src="{% static 'img/tranding_item/tranding_item_1.png' %}" alt="#" class="img-fluid">
                         </div>
                         <h3> <a href="single-product.html">Cervical pillow for airplane
-                        car office nap pillow</a> </h3>
+                                car office nap pillow</a> </h3>
                         <p>From $5</p>
                     </div>
                 </div>
@@ -256,7 +258,7 @@
                     <div class="single_product_item">
                         <img src="{% static 'img/tranding_item/tranding_item_4.png' %}" alt="#" class="img-fluid">
                         <h3> <a href="single-product.html">Cervical pillow for airplane
-                        car office nap pillow</a> </h3>
+                                car office nap pillow</a> </h3>
                         <p>From $5</p>
                     </div>
                 </div>
@@ -289,21 +291,24 @@
                             <div class="client_img">
                                 <img src="{% static 'img/client.png' %}" alt="#">
                             </div>
-                            <p>"Working in conjunction with humanitarian aid agencies, we have supported programmes to help alleviate human suffering.</p>
+                            <p>"Working in conjunction with humanitarian aid agencies, we have supported programmes to
+                                help alleviate human suffering.</p>
                             <h5>- Micky Mouse</h5>
                         </div>
                         <div class="single_client_review">
                             <div class="client_img">
                                 <img src="{% static 'img/client_1.png' %}" alt="#">
                             </div>
-                            <p>"Working in conjunction with humanitarian aid agencies, we have supported programmes to help alleviate human suffering.</p>
+                            <p>"Working in conjunction with humanitarian aid agencies, we have supported programmes to
+                                help alleviate human suffering.</p>
                             <h5>- Micky Mouse</h5>
                         </div>
                         <div class="single_client_review">
                             <div class="client_img">
                                 <img src="{% static 'img/client_2.png' %}" alt="#">
                             </div>
-                            <p>"Working in conjunction with humanitarian aid agencies, we have supported programmes to help alleviate human suffering.</p>
+                            <p>"Working in conjunction with humanitarian aid agencies, we have supported programmes to
+                                help alleviate human suffering.</p>
                             <h5>- Micky Mouse</h5>
                         </div>
                     </div>
@@ -321,13 +326,15 @@
                 <div class="col-lg-6">
                     <div class="feature_part_tittle">
                         <h3>Credibly innovate granular
-                        internal or organic sources
-                        whereas standards.</h3>
+                            internal or organic sources
+                            whereas standards.</h3>
                     </div>
                 </div>
                 <div class="col-lg-5">
                     <div class="feature_part_content">
-                        <p>Seamlessly empower fully researched growth strategies and interoperable internal or “organic” sources. Credibly innovate granular internal or “organic” sources whereas high standards in web-readiness.</p>
+                        <p>Seamlessly empower fully researched growth strategies and interoperable internal or “organic”
+                            sources. Credibly innovate granular internal or “organic” sources whereas high standards in
+                            web-readiness.</p>
                     </div>
                 </div>
             </div>
@@ -368,7 +375,8 @@
                 <div class="col-lg-8">
                     <div class="subscribe_part_content">
                         <h2>Get promotions & updates!</h2>
-                        <p>Seamlessly empower fully researched growth strategies and interoperable internal or “organic” sources credibly innovate granular internal .</p>
+                        <p>Seamlessly empower fully researched growth strategies and interoperable internal or “organic”
+                            sources credibly innovate granular internal .</p>
                         <div class="subscribe_form">
                             <input type="email" placeholder="Enter your mail">
                             <a href="#" class="btn_1">Subscribe</a>
@@ -379,7 +387,7 @@
         </div>
     </section>
     <!-- subscribe part end -->
-{% endblock %}
+    {% endblock %}
     <!--::footer_part start::-->
     <footer class="footer_part">
         <div class="footer_iner">
@@ -409,15 +417,15 @@
                 </div>
             </div>
         </div>
-        
+
         <div class="copyright_part">
             <div class="container">
                 <div class="row ">
                     <div class="col-lg-12">
                         <div class="copyright_text">
-                         <div class="copyright_link">
+                            <div class="copyright_link">
                                 <a href="#">Turms & Conditions</a>
-                                <a href="#">Privacy  Policy</a>
+                                <a href="#">Privacy Policy</a>
                                 <a href="#">Refund Policy </a>
                                 <a href="#">FAQ</a>
                             </div>
