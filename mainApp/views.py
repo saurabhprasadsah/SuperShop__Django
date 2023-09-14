@@ -5,7 +5,8 @@ from .models import *
 
 # Create your views here.
 def homePage(Request):
-    return render(Request,'index.html')
+    products = Product.objects.all()
+    return render(Request,'index.html',{'products':products})
 
 def shopPage(Request):
     return render(Request,"shop.html")
@@ -36,11 +37,9 @@ def signupPage(Request):
         if(password==cpassword):
             email = Request.POST.get("email")
             username = Request.POST.get("username")
-
             User.create(username=username,email=email,password=password)
             name = Request.POST.get("name")
             phone = Request.POST.get("phone")
-
             b = Buyer()
             b.name = name  
             b.email = email
@@ -57,4 +56,3 @@ def singlePage(Request):
 
 
 
-#hello wolrd

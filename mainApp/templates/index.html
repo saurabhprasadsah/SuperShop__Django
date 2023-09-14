@@ -101,7 +101,7 @@
         <div class="search_input" id="search_input_box">
             <div class="container ">
                 <form class="d-flex justify-content-between search-inner">
-                   <input type="text" class="form-control" id="search_input" placeholder="Search Here">
+                    <input type="text" class="form-control" id="search_input" placeholder="Search Here">
                     <button type="submit" class="btn"></button>
                     <span class="ti-close" id="close_search" title="Close Search"></span>
                 </form>
@@ -193,59 +193,25 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="section_tittle text-center">
-                        <h2>Trending Items</h2>
+                        <h2>Latest Products</h2>
                     </div>
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-4 col-sm-6">
+                {% for item in products %}
+                <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-12">
                     <div class="single_product_item">
+                       <a href="{% url 'shop' %}">
                         <div class="single_product_item_thumb">
-                            <img src="{% static 'img/tranding_item/tranding_item_1.png' %}" alt="#" class="img-fluid">
+                            <img src="{{item.pic1.url}}" style="height: 200px; width: 100px;"  alt="#" class="img-fluid">
                         </div>
-                        <h3> <a href="single-product.html">Cervical pillow for airplane
-                                car office nap pillow</a> </h3>
-                        <p>From $5</p>
+                       </a>
+                        <h3 style="height: 50px;"> <a href="{% url 'shop' %}">{{item.name}}</a> </h3>
+                        <p><del class="text-danger">&#8377;{{item.baseprice}}</del></p>
                     </div>
                 </div>
-                <div class="col-lg-4 col-sm-6">
-                    <div class="single_product_item">
-                        <img src="{% static 'img/tranding_item/tranding_item_2.png' %}" alt="#" class="img-fluid">
-                        <h3> <a href="single-product.html">Foam filling cotton slow rebound pillows</a> </h3>
-                        <p>From $5</p>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                    <div class="single_product_item">
-                        <img src="{% static 'img/tranding_item/tranding_item_3.png' %}" alt="#" class="img-fluid">
-                        <h3> <a href="single-product.html">Memory foam filling cotton Slow rebound pillows</a> </h3>
-                        <p>From $5</p>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                    <div class="single_product_item">
-                        <img src="{% static 'img/tranding_item/tranding_item_4.png' %}" alt="#" class="img-fluid">
-                        <h3> <a href="single-product.html">Cervical pillow for airplane
-                                car office nap pillow</a> </h3>
-                        <p>From $5</p>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                    <div class="single_product_item">
-                        <img src="{% static 'img/tranding_item/tranding_item_5.png' %}" alt="#" class="img-fluid">
-                        <h3> <a href="single-product.html">Foam filling cotton slow rebound pillows</a> </h3>
-                        <p>From $5</p>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                    <div class="single_product_item">
-                        <img src="{% static 'img/tranding_item/tranding_item_6.png' %}" alt="#" class="img-fluid">
-                        <h3> <a href="single-product.html">Memory foam filling cotton Slow rebound pillows</a> </h3>
-                        <p>From $5</p>
-                    </div>
-                </div>
+                {% endfor %}
             </div>
-        </div>
     </section>
     <!-- trending item end-->
 
