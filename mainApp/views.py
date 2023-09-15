@@ -9,9 +9,9 @@ def homePage(Request):
     return render(Request,'index.html',{'products':products})
 
 def shopPage(Request):
-    products = Product.objects.all().order_by("id")[0:12]
-
-    return render(Request,"shop.html")
+    products = Product.objects.all().order_by("-id")
+    
+    return render(Request,"shop.html",{'products':products})
 
 def aboutPage(Request):
     return render(Request,"about.html")
