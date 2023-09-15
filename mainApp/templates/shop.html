@@ -34,27 +34,40 @@
                     </div>
                     <div class="single_sedebar">
                         <div class="select_option">
-                            <div class="select_option_list">MainCategory <i class="right fas fa-caret-down"></i> </div>
+                            <div class="select_option_list">MainCategory<i class="right fas fa-caret-down"></i> </div>
                             <div class="select_option_dropdown">
-                                <p><a href="#">All</a></p>
+                                <p><a href="/shop/All/{{sc}}/{{br}}/">All</a></p>
                                 {% for item in maincategory %}
-                                <p><a href="#">{{item.name }}</a></p>
+                                <p><a href="/shop/{{item.name}}/{{sc}}/{{br}}/">{{item.name }}</a></p>
                                 {% endfor %}
                             </div>
                         </div>
                     </div>
                     <div class="single_sedebar">
                         <div class="select_option">
-                            <div class="select_option_list">Type <i class="right fas fa-caret-down"></i> </div>
+                            <div class="select_option_list">SubCategory<i class="right fas fa-caret-down"></i> </div>
                             <div class="select_option_dropdown">
-                                <p><a href="#">Type 1</a></p>
-                                <p><a href="#">Type 2</a></p>
-                                <p><a href="#">Type 3</a></p>
-                                <p><a href="#">Type 4</a></p>
+                                <p><a href="/shop/{{mc}}/{{sc}}/{{br}}/">All</a></p>
+                                {% for item in maincategory %}
+                                <p><a href="/shop/{{item.name}}/{{sc}}/{{br}}/">{{item.name }}</a></p>
+                                {% endfor %}
                             </div>
                         </div>
                     </div>
-                </div>
+                    <div class="single_sedebar">
+                        <div class="select_option">
+                            <div class="select_option_list">BrandCategory<i class="right fas fa-caret-down"></i> </div>
+                            <div class="select_option_dropdown">
+                                <p><a href="/shop/All/{{sc}}/{{br}}/">All</a></p>
+                                {% for item in maincategory %}
+                                <p><a href="/shop/{{item.name}}/{{sc}}/{{br}}/">{{item.name }}</a></p>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+
+
+               </div>
             </div>
             <div class="col-md-9">
                 <div class="product_list">

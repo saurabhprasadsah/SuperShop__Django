@@ -13,7 +13,9 @@ def shopPage(Request,mc,sc,br):
     maincategory = Maincategory.objects.all().order_by("id")
     subcategory = Subcategory.objects.all().order_by("id")
     brands = Brand.objects.all().order_by("id")
-    return render(Request,"shop.html",{'products':products,'maincategory':maincategory,'subcategory':subcategory,'brands':brands})
+    return render(Request,"shop.html",{'products':products,'maincategory':maincategory,'subcategory':subcategory,'brands':brands,'mc':mc,'sc':sc,'br':br})
+
+
 
 def aboutPage(Request):
     return render(Request,"about.html")
