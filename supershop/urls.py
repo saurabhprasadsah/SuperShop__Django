@@ -33,6 +33,6 @@ urlpatterns = [
     path('signup/',mainApp.signupPage, name="signup"),
 
     path('shop/',mainApp.shopPage, name="shop"),
-    path('single-Page/',mainApp.singlePage, name="single-Page"),
+    path('single-Product/',mainApp.singleProduct, name="single-Product"),
 
 ]+static(settings.MEDIA_URL,document_root = settings.MEDIA_ROOT) 

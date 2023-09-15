@@ -51,7 +51,7 @@ def signupPage(Request):
             error(Request,"Password and cofirm Password Doesn't Matched!!!")        
     return render(Request,"signup.html")
 
-def singlePage(Request):
+def singleProduct(Request):
     return render(Request,"single-product.html")
 
 

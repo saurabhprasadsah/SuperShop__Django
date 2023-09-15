@@ -59,7 +59,7 @@
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown_1">
                                         <a class="dropdown-item" href="{% url 'shop' %}"> Shop</a>
-                                        <a class="dropdown-item" href="{% url 'single-Page' %}">Single Product</a>
+                                        <a class="dropdown-item" href="{% url 'single-Product' %}">Single Product</a>
                                     </div>
 
                                 <li class="nav-item">
@@ -201,12 +201,12 @@
                 {% for item in products %}
                 <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-12">
                     <div class="single_product_item">
-                       <a href="{% url 'shop' %}">
+                       <a href="{% url 'single-Product' %}">
                         <div class="single_product_item_thumb">
                             <img src="{{item.pic1.url}}" style="height: 200px; width: 100px;"  alt="#" class="img-fluid">
                         </div>
                        </a>
-                        <h3 style="height: 50px;"> <a href="{% url 'shop' %}">{{item.name}}</a> </h3>
+                        <h3 style="height: 50px;"> <a href="{% url 'single-Product' %}">{{item.name}}</a> </h3>
                         <p><del class="text-danger">&#8377;{{item.baseprice}}</del></p>
                     </div>
                 </div>
