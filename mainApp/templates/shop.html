@@ -47,52 +47,54 @@
                         <div class="select_option">
                             <div class="select_option_list">SubCategory<i class="right fas fa-caret-down"></i> </div>
                             <div class="select_option_dropdown">
-                                <p><a href="/shop/{{mc}}/{{sc}}/{{br}}/">All</a></p>
-                                {% for item in maincategory %}
-                                <p><a href="/shop/{{item.name}}/{{sc}}/{{br}}/">{{item.name }}</a></p>
+                                <p><a href="/shop/{{mc}}/All/{{br}}/">All</a></p>
+                                {% for item in subcategory %}
+                                <p><a href="/shop/{{mc}}/{{item.name}}/{{br}}/">{{item.name }}</a></p>
                                 {% endfor %}
                             </div>
                         </div>
                     </div>
                     <div class="single_sedebar">
                         <div class="select_option">
-                            <div class="select_option_list">BrandCategory<i class="right fas fa-caret-down"></i> </div>
+                            <div class="select_option_list">Brand <i class="right fas fa-caret-down"></i> </div>
                             <div class="select_option_dropdown">
-                                <p><a href="/shop/All/{{sc}}/{{br}}/">All</a></p>
-                                {% for item in maincategory %}
-                                <p><a href="/shop/{{item.name}}/{{sc}}/{{br}}/">{{item.name }}</a></p>
+                                <p><a href="/shop/{{mc}}/{{sc}}/All/">All</a></p>
+                                {% for item in brand %}
+                                <p><a href="/shop/{{mc}}/{{sc}}/{{item.name}}/">{{item.name}}</a></p>
                                 {% endfor %}
                             </div>
                         </div>
                     </div>
-
-
-               </div>
-            </div>
-            <div class="col-md-9">
-                <div class="product_list">
-                    <div class="row">
-                        {% for item in products %}
-                        <div class="col-xl-2 col-lg-1 col-md-2 col-sm-4 col-6">
-                            <div class="single_product_item">
-                               <a href="{% url 'single-Product' %}">
-                                <div class="single_product_item_thumb">
-                                    <img src="{{item.pic1.url}}" style="height:100px; width: 100px;"  alt="#" class="img-fluid">
-                                </div>
-                               </a>
-                                <h3 style="height: 30px; width: 30;"> <a href="{% url 'single-Product' %}">{{item.name}}</a></h3>
-
-                                <p><del class="text-danger">&#8377;{{item.baseprice}}</del>&#8377;{{item.finalprice}}<sup class="text-success">{{item.discount}}%off</sup></p>
-                            </div>
-                        </div>
-                        {% endfor %}
-                    </div>
-                    <div class="load_more_btn text-center">
-                        <a href="#" class="btn_3">Load More</a>
-                    </div>
                 </div>
             </div>
         </div>
+        <div class="col-md-9">
+            <div class="product_list">
+                <div class="row">
+                    {% for item in products %}
+                    <div class="col-xl-2 col-lg-1 col-md-2 col-sm-4 col-6">
+                        <div class="single_product_item">
+                            <a href="{% url 'single-Product' %}">
+                                <div class="single_product_item_thumb">
+                                    <img src="{{item.pic1.url}}" style="height:100px; width: 100px;" alt="#"
+                                        class="img-fluid">
+                                </div>
+                            </a>
+                            <h3 style="height: 30px; width: 30;"> <a href="{% url 'single-Product' %}">{{item.name}}</a>
+                            </h3>
+
+                            <p><del class="text-danger">&#8377;{{item.baseprice}}</del>&#8377;{{item.finalprice}}<sup
+                                    class="text-success">{{item.discount}}%off</sup></p>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                <div class="load_more_btn text-center">
+                    <a href="#" class="btn_3">Load More</a>
+                </div>
+            </div>
+        </div>
+    </div>
     </div>
 </section>
 <!-- product list part end-->

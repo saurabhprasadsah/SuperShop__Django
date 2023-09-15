@@ -8,12 +8,49 @@ def homePage(Request):
     products = Product.objects.all().order_by("id")[0:12]
     return render(Request,'index.html',{'products':products})
 
+# def shopPage(Request,mc,sc,br):
+#     if(mc=="All" and sc=="All" and br=="All" ):
+#         products= Product.objects.all().order_by("-id")
+#     elif(mc!="All" and sc=="All" and br=="All"):
+#         products= Product.objects.filter(maincategory=Maincategory.objects.get(name=mc)).order_by("-id")
+
+#     products = Product.objects.all()
+#     maincategory = Maincategory.objects.all().order_by("-id")
+#     subcategory = Subcategory.objects.all().order_by("-id")
+#     brands = Brand.objects.all().order_by("-id")
+#     return render(Request,"shop.html",{'products':products,'maincategory':maincategory,'subcategory':subcategory,'brands':brands,'mc':mc,'sc':sc,'br':br})
+
 def shopPage(Request,mc,sc,br):
-    products = Product.objects.all().order_by("-id")
-    maincategory = Maincategory.objects.all().order_by("id")
-    subcategory = Subcategory.objects.all().order_by("id")
-    brands = Brand.objects.all().order_by("id")
-    return render(Request,"shop.html",{'products':products,'maincategory':maincategory,'subcategory':subcategory,'brands':brands,'mc':mc,'sc':sc,'br':br})
+    if(mc=="All" and sc=="All" and br=="All"):
+        products = Product.objects.all().order_by("-id")
+    elif(mc!="All" and sc=="All" and br=="All"):
+        products = Product.objects.filter(maincategory=Maincategory.objects.get(name=mc)).order_by("-id")
+    elif(mc=="All" and sc!="All" and br=="All"):
+        products = Product.objects.filter(subcategory=Subcategory.objects.get(name=sc)).order_by("-id")
+    elif(mc=="All" and sc=="All" and br!="All"):
+        products = Product.objects.filter(brand=Brand.objects.get(name=br)).order_by("-id")
+    elif(mc!="All" and sc!="All" and br=="All"):
+        products = Product.objects.filter(maincategory=Maincategory.objects.get(name=mc),subcategory=Subcategory.objects.get(name=sc)).order_by("-id").order_by("-id")
+    elif(mc!="All" and sc=="All" and br!="All"):
+        products = Product.objects.filter(maincategory=Maincategory.objects.get(name=mc),brand=Brand.objects.get(name=br)).order_by("-id").order_by("-id")
+    elif(mc=="All" and sc!="All" and br!="All"):
+        products = Product.objects.filter(brand=Brand.objects.get(name=br),subcategory=Subcategory.objects.get(name=sc)).order_by("-id").order_by("-id")    
+    else:
+        products = Product.objects.filter(maincategory=Maincategory.objects.get(name=mc),subcategory=Subcategory.objects.get(name=sc),brand=Brand.objects.get(name=br)).order_by("-id").order_by("-id")    
+    
+    
+    maincategory = Maincategory.objects.all().order_by("-id")
+    subcategory = Subcategory.objects.all().order_by("-id")
+    brand = Brand.objects.all().order_by("-id")
+
+    # paginator = Paginator(products, 12)
+    # page_number = Request.GET.get("page")
+    # page_obj = paginator.get_page(page_number)
+    return render(Request,"shop.html",{'products':products,'maincategory':maincategory,'subcategory':subcategory,'brand':brand,'mc':mc,'sc':sc,'br':br,})
+
+
+
+
 
 
 
