@@ -5,10 +5,12 @@ from .models import *
 
 # Create your views here.
 def homePage(Request):
-    products = Product.objects.all()
+    products = Product.objects.all().order_by("id")[0:12]
     return render(Request,'index.html',{'products':products})
 
 def shopPage(Request):
+    products = Product.objects.all().order_by("id")[0:12]
+
     return render(Request,"shop.html")
 
 def aboutPage(Request):
