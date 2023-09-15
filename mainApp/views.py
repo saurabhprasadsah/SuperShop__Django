@@ -13,7 +13,7 @@ def shopPage(Request):
     maincategory = Maincategory.objects.all().order_by("id")
     subcategory = Subcategory.objects.all().order_by("id")
     brands = Brand.objects.all().order_by("id")
-    return render(Request,"shop.html",{'products':products,'maincategory':Maincategory,'subcategory':Subcategory,'brands':Brand})
+    return render(Request,"shop.html",{'products':products,'maincategory':maincategory,'subcategory':subcategory,'brands':brands})
 
 def aboutPage(Request):
     return render(Request,"about.html")
