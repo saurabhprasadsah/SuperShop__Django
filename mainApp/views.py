@@ -8,7 +8,7 @@ def homePage(Request):
     products = Product.objects.all().order_by("id")[0:12]
     return render(Request,'index.html',{'products':products})
 
-def shopPage(Request):
+def shopPage(Request,mc,sc,br):
     products = Product.objects.all().order_by("-id")
     maincategory = Maincategory.objects.all().order_by("id")
     subcategory = Subcategory.objects.all().order_by("id")

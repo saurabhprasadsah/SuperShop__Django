@@ -64,11 +64,12 @@
                             <div class="single_product_item">
                                <a href="{% url 'single-Product' %}">
                                 <div class="single_product_item_thumb">
-                                    <img src="{{item.pic1.url}}" style="height:150px; width: 75px;"  alt="#" class="img-fluid">
+                                    <img src="{{item.pic1.url}}" style="height:100px; width: 100px;"  alt="#" class="img-fluid">
                                 </div>
                                </a>
-                                <h3 style="height: 50px;"> <a href="{% url 'single-Product' %}">{{item.name}}</a></h3>
-                                <p><del class="text-danger">&#8377;{{item.baseprice}}</del>&#8377;{{item.finalprice}}<sup class="text-success">{{item.discount}} %off</sup></p>
+                                <h3 style="height: 30px; width: 30;"> <a href="{% url 'single-Product' %}">{{item.name}}</a></h3>
+
+                                <p><del class="text-danger">&#8377;{{item.baseprice}}</del>&#8377;{{item.finalprice}}<sup class="text-success">{{item.discount}}%off</sup></p>
                             </div>
                         </div>
                         {% endfor %}

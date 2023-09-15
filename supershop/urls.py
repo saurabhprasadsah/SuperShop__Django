@@ -32,7 +32,7 @@ urlpatterns = [
     path('login/',mainApp.loginPage, name="login"),
     path('signup/',mainApp.signupPage, name="signup"),
 
-    path('shop/',mainApp.shopPage, name="shop"),
+    path('shop/<str:mc>/<str:sc>/<str:br>/',mainApp.shopPage, name="shop"),
     path('single-Product/',mainApp.singleProduct, name="single-Product"),
 
 ]+static(settings.MEDIA_URL,document_root = settings.MEDIA_ROOT) 
