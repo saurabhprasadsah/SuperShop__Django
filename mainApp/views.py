@@ -21,6 +21,7 @@ def homePage(Request):
 #     return render(Request,"shop.html",{'products':products,'maincategory':maincategory,'subcategory':subcategory,'brands':brands,'mc':mc,'sc':sc,'br':br})
 
 def shopPage(Request,mc,sc,br):
+
     if(mc=="All" and sc=="All" and br=="All"):
         products = Product.objects.all().order_by("-id")
     elif(mc!="All" and sc=="All" and br=="All"):
@@ -47,9 +48,6 @@ def shopPage(Request,mc,sc,br):
     # page_number = Request.GET.get("page")
     # page_obj = paginator.get_page(page_number)
     return render(Request,"shop.html",{'products':products,'maincategory':maincategory,'subcategory':subcategory,'brand':brand,'mc':mc,'sc':sc,'br':br,})
-
-
-
 
 
 
