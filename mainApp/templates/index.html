@@ -52,16 +52,11 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="{% url 'about' %}">about</a>
                                 </li>
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="blog.html" id="navbarDropdown_1"
-                                        role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        shop
-                                    </a>
-                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown_1">
-                                        <a class="dropdown-item" href="/shop/All/All/All"> Shop</a>
-                                        <a class="dropdown-item" href="{% url 'single-Product' %}">Single Product</a>
-                                    </div>
 
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/shop/All/All/All">Shop Page</a>
+                                </li>
+                              
                                 <li class="nav-item">
                                     <a class="nav-link" href="{% url 'contact' %}">Contact</a>
                                 </li>
@@ -201,12 +196,12 @@
                 {% for item in products %}
                 <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-12">
                     <div class="single_product_item">
-                       <a href="{% url 'single-Product' %}">
+                       <a href="/single-product/{{item.id}}">
                         <div class="single_product_item_thumb">
                             <img src="{{item.pic1.url}}" style="height: 200px; width: 100px;"  alt="#" class="img-fluid">
                         </div>
                        </a>
-                        <h3 style="height: 50px;"> <a href="{% url 'single-Product' %}">{{item.name}}</a></h3>
+                        <h3 style="height: 50px;"> <a href="/single-product/{{item.id}}">{{item.name}}</a></h3>
                         <p><del class="text-danger">&#8377;{{item.baseprice}}</del>&#8377;{{item.finalprice}}<sup class="text-success">{{item.discount}} %off</sup></p>
                     </div>
                 </div>

@@ -92,8 +92,9 @@ def signupPage(Request):
             error(Request,"Password and cofirm Password Doesn't Matched!!!")        
     return render(Request,"signup.html")
 
-def singleProduct(Request):
-    return render(Request,"single-product.html")
+def singleProduct(Request,id):
+    product = Product.objects.get(id=id)
+    return render(Request,"single-product.html",{'product':product})
 
 
 
