@@ -88,20 +88,29 @@
           <h1>{{product.name}} <br></h1>
           <h2>{{product.maincategory.name}}/{{product.subcategory.name}}/{{product.brand.name}}</h2>
           <p>{{product.description}}</p>
-          <div class="card_area">
-            <div class="product_count_area">
-              <p>Quantity</p>
-              <div class="product_count d-inline-block">
-                <span class="product_count_item inumber-decrement"> <i class="ti-minus"></i></span>
-                <input class="product_count_item input-number" type="text" value="1" min="0" max="10">
-                <span class="product_count_item number-increment"> <i class="ti-plus"></i></span>
+          <h5>Color:{{product.color}}</h5>
+          <h5>Size:{{product.size}}</h5>
+          <h5><del
+              class="text-danger">&#8377;{{product.baseprice}}</del>&#8377;{{product.finalprice}}<sup>{{product.discount}}%off</sup>
+          </h5>
+
+          <form action="/add-to-cart/" method="post">
+            <div class="card_area">
+              <div class="product_count_area">
+                <p>Quantity</p>
+                <div class="product_count d-inline-block">
+                  <span class="product_count_item inumber-decrement"> <i class="ti-minus"></i></span>
+                  <input class="product_count_item input-number" type="text" name="qty"value="1" min="1">
+                  <span class="product_count_item number-increment"> <i class="ti-plus"></i></span>
+                </div>
               </div>
-              <p>$5</p>
+              <div class="add_to_cart">
+                <button type="submit" class="btn_3"> <i class="fa fa-shopping-cart"></i> add to cart</button>
+                <a type="submit" class="btn_3" href="/add-to-wishlist/{{product.id}}/"><i class="fa fa-heart"></i> add to wishlist</a>
+
+              </div>
             </div>
-            <div class="add_to_cart">
-              <a href="#" class="btn_3">add to cart</a>
-            </div>
-          </div>
+          </form>
         </div>
       </div>
     </div>

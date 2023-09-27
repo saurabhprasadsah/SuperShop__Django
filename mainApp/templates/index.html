@@ -75,7 +75,7 @@
                                     <a class="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdown_2"
                                         role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         saurabh kumar
-                                    </a>
+                                    </a> 
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown_2">
                                         <a class="dropdown-item" href="#"> profile </a>
                                         <a class="dropdown-item" href="{% url 'cart' %}"> cart </a>
@@ -202,7 +202,7 @@
                         </div>
                        </a>
                         <h4 style="height: 50px;"> <a href="/single-product/{{item.id}}">{{item.name}}</a></h4>
-                        <p><del class="text-danger">&#8377;{{item.baseprice}}</del>&#8377;{{item.finalprice}}<sup class="text-success">{{item.discount}} %off</sup></p>
+                        <p><del class="text-danger">&#8377;{{item.baseprice}}</del> &#8377;{{item.finalprice}} <sup class="text-success">{{item.discount}}%off</sup></p>
                     </div>
                 </div>
                 {% endfor %}
