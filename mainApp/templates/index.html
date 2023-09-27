@@ -158,7 +158,7 @@
                         <div class="row align-items-center justify-content-between">
                             <div class="col-lg-6 col-sm-6">
                                 <div class="single_product_img">
-                                    <img src="{% static 'banner/banner4.jpg' %}" style="height: 400px;"
+                                    <img src="{% static 'banner/banner4.jpg' %}" style="height:400px;"
                                         class="img-fluid" alt="#">
                                     <img src="{% static 'img/product_overlay.png' %}" alt="#"
                                         class="product_overlay img-fluid">
@@ -198,10 +198,10 @@
                     <div class="single_product_item">
                        <a href="/single-product/{{item.id}}">
                         <div class="single_product_item_thumb">
-                            <img src="{{item.pic1.url}}" style="height: 200px; width: 100px;"  alt="#" class="img-fluid">
+                            <img src="{{item.pic1.url}}" style="height: 200px; width: 175px;" alt="#" class="img-fluid">
                         </div>
                        </a>
-                        <h3 style="height: 50px;"> <a href="/single-product/{{item.id}}">{{item.name}}</a></h3>
+                        <h4 style="height: 50px;"> <a href="/single-product/{{item.id}}">{{item.name}}</a></h4>
                         <p><del class="text-danger">&#8377;{{item.baseprice}}</del>&#8377;{{item.finalprice}}<sup class="text-success">{{item.discount}} %off</sup></p>
                     </div>
                 </div>
