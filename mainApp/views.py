@@ -1,6 +1,7 @@
 from django.shortcuts import render, HttpResponseRedirect
 from django.contrib.messages import success, error
 from django.contrib.auth.models import User
+from django.contrib.auth import login,logout,authenticate
 from .models import *
 
 
@@ -119,29 +120,39 @@ def contactPage(Request):
 
 
 def loginPage(Request):
+    if(Request.method=="POST"):
+        username= username.Request.get("username")
+        password= password.Request.get("password")
+        user = authenticate(username=username,password=password)
+        if(user is not None):
+            pass  
+        else:
+            error(Request,"Invalid Username or Password!!!")
+
     return render(Request, "login.html")
 
 
 # signup page
 def signupPage(Request):
-    if Request.method == "POST":
+    if (Request.method == "POST"):
         password = Request.POST.get("password")
         cpassword = Request.POST.get("cpassword")
         if password == cpassword:
             email = Request.POST.get("email")
             username = Request.POST.get("username")
-
-            User.objects.create_user(username=username, email=email, password=password)
             name = Request.POST.get("name")
-            phone = Request.POST.get("phone")
-
-            b = Buyer()
-            b.name = name
-            b.email = email
-            b.username = username
-            b.phone = phone
-            b.save()
-            return HttpResponseRedirect("/login")
+            try:
+                User.objects.create_user(username=username, email=email, password=password, first_name=name)
+                phone = Request.POST.get("phone")
+                b = Buyer()
+                b.name = name
+                b.email = email
+                b.username = username
+                b.phone = phone
+                b.save()
+                return HttpResponseRedirect("/login")
+            except:
+                error(Request, "UserName already taken!!!")
         else:
             error(Request, "Password and cofirm Password Doesn't Matched!!!")
     return render(Request, "signup.html")

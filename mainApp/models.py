@@ -55,6 +55,7 @@ class Buyer(models.Model):
       name = models.CharField(max_length=30)
       username =models.CharField(max_length=30, unique=True)
       emails = models.EmailField(max_length=30)
+      phone= models.CharField(max_length=11,default="")
       address =models.TextField(default="",null=True, blank=True)
       pin = models.IntegerField(default=None,null=True, blank=True)
       city = models.CharField(max_length=50,default="",null=True, blank=True)
