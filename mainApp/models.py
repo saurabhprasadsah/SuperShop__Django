@@ -7,7 +7,8 @@ class Maincategory(models.Model):
 
     def __str__(self):  
         return str(self.id)+" /"+self.name
-    
+
+
 class Subcategory(models.Model):
     id = models.AutoField(primary_key= True, unique=True)
     name = models.CharField(max_length=30)
@@ -25,6 +26,7 @@ class Brand(models.Model):
     def __str__(self):
         return str(self.id)+" /"+self.name
     
+
 
 class Product(models.Model):
     id = models.AutoField(primary_key= True, unique=True)
@@ -62,6 +64,8 @@ class Buyer(models.Model):
       def __str__(self):
           return str(self.id)+" / "+self.name+" / "+self.username
           
+
+
 
 
 
