@@ -118,8 +118,6 @@ def confirmationPage(Request):
 def contactPage(Request):
     return render(Request, "contact.html")
 
-
-
 def loginPage(Request):
     if(Request.method=="POST"):
         username = Request.POST.get("username")
@@ -128,9 +126,9 @@ def loginPage(Request):
         if(user is not None):
             login(Request,user)
             if(user.is_superuser):
-                return HttpResponseRedirect("/admin")
+                return HttpResponseRedirect("/admin/")
             else:
-                return HttpResponseRedirect("/profile")
+                return HttpResponseRedirect("/profile/")
         else:
             error(Request,"Invalid Username or Password!!!")
     return render(Request,"login.html")
@@ -155,7 +153,7 @@ def signupPage(Request):
                 b.username = username
                 b.phone = phone
                 b.save()
-                return HttpResponseRedirect("/login")
+                return HttpResponseRedirect("/login/")
             except:
                 error(Request, "UserName already taken!!!")
         else:
@@ -163,6 +161,28 @@ def signupPage(Request):
     return render(Request, "signup.html")
 
 
+
+def profilePage(Request):
+    if(Request.user.is_superuser):
+        return HttpResponseRedirect("/admin/")
+    username = Request.user.username
+    try:
+        buyer = Buyer.objects.get(username=username)
+        return render(Request,"profile.html",{'buyer':buyer})
+    except:
+        return HttpResponseRedirect("/login/")    
+    
+
+def updateProfile(Request):
+    pass
+
+    
+
 def singleProduct(Request, id):
     product = Product.objects.get(id=id)
     return render(Request, "single-product.html", {"product": product})
+
+
+def logoutPage(Request):
+    logout(Request)
+    return HttpResponseRedirect("/login/")

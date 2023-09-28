@@ -30,7 +30,14 @@ urlpatterns = [
     path('confirmation/',mainApp.confirmationPage, name="confirmation"),
     path('contact/',mainApp.contactPage, name="contact"),
     path('login/',mainApp.loginPage, name="login"),
+    path('logout/',mainApp.logoutPage, name="logout"),
+
     path('signup/',mainApp.signupPage, name="signup"),
+    path('profile/',mainApp.profilePage, name="profile"),
+
+    path('update-profile/',mainApp.updateProfile, name="updateProfile"),
+
+
 
     path('shop/<str:mc>/<str:sc>/<str:br>/',mainApp.shopPage, name="shop"),
 

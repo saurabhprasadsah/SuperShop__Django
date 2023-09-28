@@ -77,10 +77,10 @@
                                         saurabh kumar
                                     </a> 
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown_2">
-                                        <a class="dropdown-item" href="#"> profile </a>
+                                        <a class="dropdown-item" href="{% url 'profile' %}"> profile </a>
                                         <a class="dropdown-item" href="{% url 'cart' %}"> cart </a>
                                         <a class="dropdown-item" href="{% url 'checkout' %}"> checkout </a>
-                                        <a class="dropdown-item" href="#"> Logout </a>
+                                        <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
                                     </div>
                                 </li>
                                 {% else %}
