@@ -47,48 +47,51 @@
                         </div>
                         {% endfor %}
                         {% endif %}
-                        <form class="row contact_form" action="" method="post" novalidate="novalidate">
+                        <form class="row contact_form" action="" method="post" novalidate="novalidate"
+                            enctype="multipart/form-data">
                             {% csrf_token %}
                             <div class="row">
                                 <div class="row form-group p_star mx-1 w-300">
-                                    <input type="text" class="form-control" id="name" name="name"
+                                    <input type="text" class="form-control" id="name" name="name" value="{{buyer.name}}"
                                         placeholder="Full Name">
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-6 form-group p_star">
                                     <input type="email" class="form-control" id="email" name="email"
-                                        placeholder="Email Address">
+                                        placeholder="Email Address" value="{{buyer.email}}">
                                 </div>
                                 <div class="col-md-6 form-group p_star">
                                     <input type="text" class="form-control" id="phone" name="phone"
-                                        placeholder="Phone Number">
+                                        placeholder="Phone Number" value="{{buyer.phone}}">
                                 </div>
                             </div>
                             <div class="row form-group p_star mx-1 w-300">
-                                <textarea name="address" rows="2" class="form-control" placeholder="Address...."></textarea>
+                                <textarea name="address" rows="2" class="form-control"
+                                    placeholder="Address...." value="{{buyer.address}}"></textarea>
                             </div>
+                            <div class="row">
+                                <div class="col-md-6 form-group p_star">
+                                    <input type="number" class="form-control" id="pin" name="pin"
+                                        placeholder="PIN CODE" value="{{buyer.pin}}">
+                                </div>
+                                <div class="col-md-6 form-group p_star">
+                                    <input type="text" class="form-control" name="city" id="city" placeholder="city" value="{{buyer.city}}">
+                                </div>
+                            </div>
+
                             <div class="row">
                                 <div class="col-md-6 form-group p_star">
                                     <input type="file" class="form-control" name="pic">
                                 </div>
-                                <div class="col-md-6 form-group p_star">
-                                    <input type="number" class="form-control" id="pin" name="pin"
-                                        placeholder="confirm pin">
-                                </div>
-                            </div>
-                            
-                            <div class="row">
-                                <div class="col-md-6 form-group p_star">
-                                    <input type="password" class="form-control" name="password" id="password" placeholder="password">
-                                </div>
-                                <div class="col-md-6 form-group p_star">
-                                    <input type="password" class="form-control" id="password" name="password" placeholder="confirm password">
-                                </div>
-                            </div>
 
+                                <div class="col-md-6 form-group p_star">
+                                    <input type="text" class="form-control" id="state" name="state" value="{{buyer.state}}"
+                                        placeholder="cstate">
+                                </div>
+                            </div>
                             <div class="col-md-12 form-group">
-                                <button type="submit" value="submit" class="btn_3">Signup</button>
+                                <button type="submit" value="submit" class="btn_3">Update</button>
                             </div>
                         </form>
                     </div>
