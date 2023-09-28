@@ -119,17 +119,22 @@ def contactPage(Request):
     return render(Request, "contact.html")
 
 
+
 def loginPage(Request):
     if(Request.method=="POST"):
-        username= username.Request.get("username")
-        password= password.Request.get("password")
+        username = Request.POST.get("username")
+        password = Request.POST.get("password")
         user = authenticate(username=username,password=password)
         if(user is not None):
-            pass  
+            login(Request,user)
+            if(user.is_superuser):
+                return HttpResponseRedirect("/admin")
+            else:
+                return HttpResponseRedirect("/profile")
         else:
             error(Request,"Invalid Username or Password!!!")
+    return render(Request,"login.html")
 
-    return render(Request, "login.html")
 
 
 # signup page
