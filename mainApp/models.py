@@ -54,13 +54,12 @@ class Buyer(models.Model):
       username =models.CharField(max_length=30, unique=True)
       emails = models.EmailField(max_length=30)
       address =models.TextField(default="",null=True, blank=True)
-      pin = models.IntegerField(default="",null=True, blank=True)
+      pin = models.IntegerField(default=None,null=True, blank=True)
       city = models.CharField(max_length=50,default="",null=True, blank=True)
       state= models.CharField(max_length=50,default="",null=True, blank=True)
       pic =models.ImageField(upload_to="uploads/users",default="",null=True, blank=True)
 
       def __str__(self):
-          
           return str(self.id)+" / "+self.name+" / "+self.username
           
 
