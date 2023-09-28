@@ -174,7 +174,14 @@ def profilePage(Request):
     
 
 def updateProfile(Request):
-    pass
+    if(Request.user.is_superuser):
+        return HttpResponseRedirect("/admin/")
+    username = Request.user.username
+    try:
+        buyer = Buyer.objects.get(username=username)
+        return render(Request,"update-profile.html",{'buyer':buyer})
+    except:
+        return HttpResponseRedirect("/login/")   
 
     
 
