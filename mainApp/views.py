@@ -1,7 +1,7 @@
 from django.shortcuts import render, HttpResponseRedirect
 from django.contrib.messages import success, error
 from django.contrib.auth.models import User
-from django.contrib.auth import login,logout,authenticate
+from django.contrib.auth import login, logout, authenticate
 from .models import *
 
 
@@ -118,26 +118,26 @@ def confirmationPage(Request):
 def contactPage(Request):
     return render(Request, "contact.html")
 
+
 def loginPage(Request):
-    if(Request.method=="POST"):
+    if Request.method == "POST":
         username = Request.POST.get("username")
         password = Request.POST.get("password")
-        user = authenticate(username=username,password=password)
-        if(user is not None):
-            login(Request,user)
-            if(user.is_superuser):
+        user = authenticate(username=username, password=password)
+        if user is not None:
+            login(Request, user)
+            if user.is_superuser:
                 return HttpResponseRedirect("/admin/")
             else:
                 return HttpResponseRedirect("/profile/")
         else:
-            error(Request,"Invalid Username or Password!!!")
-    return render(Request,"login.html")
-
+            error(Request, "Invalid Username or Password!!!")
+    return render(Request, "login.html")
 
 
 # signup page
 def signupPage(Request):
-    if (Request.method == "POST"):
+    if Request.method == "POST":
         password = Request.POST.get("password")
         cpassword = Request.POST.get("cpassword")
         if password == cpassword:
@@ -145,7 +145,9 @@ def signupPage(Request):
             username = Request.POST.get("username")
             name = Request.POST.get("name")
             try:
-                User.objects.create_user(username=username, email=email, password=password, first_name=name)
+                User.objects.create_user(
+                    username=username, email=email, password=password, first_name=name
+                )
                 phone = Request.POST.get("phone")
                 b = Buyer()
                 b.name = name
@@ -161,25 +163,24 @@ def signupPage(Request):
     return render(Request, "signup.html")
 
 
-
 def profilePage(Request):
-    if(Request.user.is_superuser):
+    if Request.user.is_superuser:
         return HttpResponseRedirect("/admin/")
     username = Request.user.username
     try:
         buyer = Buyer.objects.get(username=username)
-        return render(Request,"profile.html",{'buyer':buyer})
+        return render(Request, "profile.html", {"buyer": buyer})
     except:
-        return HttpResponseRedirect("/login/")    
-    
+        return HttpResponseRedirect("/login/")
+
 
 def updateProfile(Request):
-    if(Request.user.is_superuser):
+    if Request.user.is_superuser:
         return HttpResponseRedirect("/admin/")
     username = Request.user.username
     try:
         buyer = Buyer.objects.get(username=username)
-        if(Request.method=="POST"):
+        if Request.method == "POST":
             buyer.name = Request.POST.get("name")
             buyer.email = Request.POST.get("email")
             buyer.phone = Request.POST.get("phone")
@@ -187,15 +188,15 @@ def updateProfile(Request):
             buyer.state = Request.POST.get("state")
             buyer.pin = Request.POST.get("pin")
             buyer.address = Request.POST.get("address")
-            if(Request.FILES.get("pic")):
-                buyer.name= Request.FIELS.get("pic")
-            buyer.save()     
+            if Request.FILES.get("pic"):
+                buyer.pic = Request.FILES.get("pic")
+            buyer.save()
             return HttpResponseRedirect("/profile")
-        return render(Request,"update-profile.html",{'buyer':buyer})
-    except:
-        return HttpResponseRedirect("/login/")   
+        return render(Request, "update-profile.html", {"buyer": buyer})
 
-    
+    except:
+        return HttpResponseRedirect("/login/")
+
 
 def singleProduct(Request, id):
     product = Product.objects.get(id=id)
