@@ -189,7 +189,7 @@ def updateProfile(Request):
             buyer.address = Request.POST.get("address")
             if(Request.FILES.get("pic")):
                 buyer.name= Request.FIELS.get("pic")
-                buyer.save()     
+            buyer.save()     
             return HttpResponseRedirect("/profile")
         return render(Request,"update-profile.html",{'buyer':buyer})
     except:
