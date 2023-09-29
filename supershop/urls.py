@@ -36,7 +36,8 @@ urlpatterns = [
     path('profile/',mainApp.profilePage, name="profile"),
 
     path('update-profile/',mainApp.updateProfilePage, name="updateProfile"),
-    path('addtowishlist/',mainApp.addtowishlistPage, name="addtowishlist"),
+
+    path('add-to-wishlist/<int:id>/',mainApp.addtowishlistPage, name="add-to-wishlist"),
 
 
 
