@@ -36,6 +36,8 @@ urlpatterns = [
     path('profile/',mainApp.profilePage, name="profile"),
 
     path('update-profile/',mainApp.updateProfilePage, name="updateProfile"),
+    path('addtowishlist/',mainApp.addtowishlistPage, name="addtowishlist"),
+
 
 
 

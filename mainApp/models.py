@@ -54,7 +54,7 @@ class Buyer(models.Model):
       id = models.AutoField(primary_key=True)
       name = models.CharField(max_length=30)
       username =models.CharField(max_length=30, unique=True)
-      emails = models.EmailField(max_length=30)
+      email = models.EmailField(max_length=30)
       phone= models.CharField(max_length=11,default="")
       address =models.TextField(default="",null=True, blank=True)
       pin = models.IntegerField(default=None,null=True, blank=True)
@@ -65,6 +65,15 @@ class Buyer(models.Model):
       def __str__(self):
           return str(self.id)+" / "+self.name+" / "+self.username
           
+
+class Wishlist(models.Model):
+    id= models.AutoField(primary_key=True)
+    product= models.ForeignKey(Product,on_delete=models.CASCADE)
+    buyer= models.ForeignKey(Buyer,on_delete=models.CASCADE)
+
+    def __str__(self):
+          return str(self.id)+" / "+self.buyer.username
+    
 
 
 

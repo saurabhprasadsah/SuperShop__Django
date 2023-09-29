@@ -221,6 +221,22 @@ def singleProduct(Request, id):
     return render(Request, "single-product.html", {"product": product})
 
 
+def addtowishlistPage(Request,id):
+    try:
+        buyer = Buyer.objects.get(username=Request.user.username)
+        product = Product.objects.get(id=id)
+        try:
+            w=Wishlist.objects.get(product=product,buyer=buyer)
+        except:
+            w= Wishlist()
+            w.product= product
+            w.buyer= buyer
+            w.save() 
+    except:
+        pass 
+    return HttpResponseRedirect("/profile")   
+
+
 def logoutPage(Request):
     logout(Request)
     return HttpResponseRedirect("/login/")
