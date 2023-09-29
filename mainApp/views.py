@@ -182,7 +182,7 @@ def updateProfile(Request):
         buyer = Buyer.objects.get(username=username)
         if Request.method == "POST":
             buyer.name = Request.POST.get("name")
-            buyer.email = Request.POST.get("email")
+            buyer.emails = Request.POST.get("emails")
             buyer.phone = Request.POST.get("phone")
             buyer.city = Request.POST.get("city")
             buyer.state = Request.POST.get("state")
@@ -193,7 +193,6 @@ def updateProfile(Request):
             buyer.save()
             return HttpResponseRedirect("/profile")
         return render(Request, "update-profile.html", {"buyer": buyer})
-
     except:
         return HttpResponseRedirect("/login/")
 
