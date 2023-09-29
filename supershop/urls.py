@@ -35,7 +35,7 @@ urlpatterns = [
     path('signup/',mainApp.signupPage, name="signup"),
     path('profile/',mainApp.profilePage, name="profile"),
 
-    path('update-profile/',mainApp.updateProfile, name="updateProfile"),
+    path('update-profile/',mainApp.updateProfilePage, name="updateProfile"),
 
 
 
