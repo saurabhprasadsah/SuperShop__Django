@@ -163,6 +163,7 @@ def signupPage(Request):
     return render(Request, "signup.html")
 
 
+
 def profilePage(Request):
     if Request.user.is_superuser:
         return HttpResponseRedirect("/admin/")
@@ -173,29 +174,6 @@ def profilePage(Request):
         return render(Request, "profile.html", {"buyer": buyer,"wishlist":wishlist})
     except:
         return HttpResponseRedirect("/login/")
-
-
-# def updateProfile(Request):
-#     if Request.user.is_superuser:
-#         return HttpResponseRedirect("/admin/")
-#     username = Request.user.username
-#     try:
-#         buyer = Buyer.objects.get(username=username)
-#         if Request.method == "POST":
-#             buyer.name = Request.POST.get("name")
-#             buyer.emails = Request.POST.get("emails")
-#             buyer.phone = Request.POST.get("phone")
-#             buyer.city = Request.POST.get("city")
-#             buyer.state = Request.POST.get("state")
-#             buyer.pin = Request.POST.get("pin")
-#             buyer.address = Request.POST.get("address")
-#             if Request.FILES.get("pic"):
-#                 buyer.pic = Request.FILES.get("pic")
-#             buyer.save()
-#             return HttpResponseRedirect("/profile")
-#         return render(Request, "update-profile.html", {"buyer": buyer})
-#     except:
-#        return HttpResponseRedirect("/login/")
 
 
 def updateProfilePage(Request):
