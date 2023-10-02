@@ -175,7 +175,7 @@ def profilePage(Request):
     except:
         return HttpResponseRedirect("/login/")
 
-
+#function of updateprofilepage!
 def updateProfilePage(Request):
     if(Request.user.is_superuser):
         return HttpResponseRedirect("/admin/")
