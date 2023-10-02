@@ -194,12 +194,12 @@ def updateProfilePage(Request):
         return HttpResponseRedirect("/profile")
     return render(Request,"update-profile.html",{'buyer':buyer})
 
-
+#Function will be single product
 def singleProduct(Request, id):
     product = Product.objects.get(id=id)
     return render(Request, "single-product.html", {"product": product})
 
-
+#function will be addtowishlist
 def addtowishlistPage(Request,id):
     try:
         buyer = Buyer.objects.get(username=Request.user.username)
