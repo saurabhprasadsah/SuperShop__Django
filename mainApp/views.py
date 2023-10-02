@@ -169,7 +169,8 @@ def profilePage(Request):
     username = Request.user.username
     try:
         buyer = Buyer.objects.get(username=username)
-        return render(Request, "profile.html", {"buyer": buyer})
+        wishlist = Wishlist.objects.filter(buyer=buyer)
+        return render(Request, "profile.html", {"buyer": buyer,"wishlist":wishlist})
     except:
         return HttpResponseRedirect("/login/")
 

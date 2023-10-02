@@ -73,5 +73,29 @@
             </table>
         </div>
     </div>
+    <h5 class="text-center mt-3 bg-secondary p-2 text">wishlist section</h5>
+    {% if wishlist %}
+    <table>
+        <tr>
+            <th></th>
+            <th>Name</th>
+            <th>Brand/color/size</th>
+            <th>Price</th>
+            <th></th>
+            <th></th>
+        </tr>
+        {% for item in wishlist %}
+        <tr>
+            <td></td>
+            <td>Name</td>
+            <td>Brand/color/size</td>
+            <td>Price</td>
+            <td></td>
+            <td></td>
+        </tr>
+        {% else %}
+    <p class="text-center mt-3">No item in wishlist</p>
+    </table>
+    {%endif%}
 </div>
 {% endblock %}
