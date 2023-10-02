@@ -163,7 +163,7 @@ def signupPage(Request):
     return render(Request, "signup.html")
 
 
-
+#function of profilepage
 def profilePage(Request):
     if Request.user.is_superuser:
         return HttpResponseRedirect("/admin/")
