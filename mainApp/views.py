@@ -168,12 +168,12 @@ def profilePage(Request):
     if Request.user.is_superuser:
         return HttpResponseRedirect("/admin/")
     username = Request.user.username
-    try:
-        buyer = Buyer.objects.get(username=username)
-        wishlist = Wishlist.objects.filter(buyer=buyer)
-        return render(Request, "profile.html", {"buyer": buyer,"wishlist":wishlist})
-    except:
-        return HttpResponseRedirect("/login/")
+    #try:
+    buyer = Buyer.objects.get(username=username)
+    wishlist = Wishlist.objects.filter(buyer=buyer)
+    return render(Request, "profile.html", {"buyer": buyer,"wishlist":wishlist})
+    #except:
+    #    return HttpResponseRedirect("/login/")
 
 #function of updateprofilepage!
 def updateProfilePage(Request):

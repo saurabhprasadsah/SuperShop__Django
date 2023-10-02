@@ -76,29 +76,32 @@
             </table>
         </div>
     </div>
-    <h5 class="text-center mt-3 bg-secondary p-2 text">wishlist section</h5>
+    <h5 class="text-center mt-3 bg-secondary p-2 text-light">Wishlist Section</h5>
     {% if wishlist %}
-    <table>
-        <tr>
-            <th></th>
-            <th>Name</th>
-            <th>Brand/color/size</th>
-            <th>Price</th>
-            <th></th>
-            <th></th>
-        </tr>
-        {% for item in wishlist %}
-        <tr>
-            <td></td>
-            <td>Name</td>
-            <td>Brand/color/size</td>
-            <td>Price</td>
-            <td></td>
-            <td></td>
-        </tr>
-        {% else %}
-    <p class="text-center mt-3">No item in wishlist</p>
-    </table>
-    {%endif%}
-</div>
+    <div class="table-responsive">
+        <table class="table">
+            <tr>
+                <th></th>
+                <th>Name</th>
+                <th>Brand/Color/Size</th>
+                <th>Price</th>
+                <th></th>
+                <th></th>
+            </tr>
+            {% for item in wishlist %}
+            <tr>
+                <td><img src="{{item.product.pic1.url}}" height="80px" width="80px" class="rounded" alt=""></td>
+                <td>{{item.product.name}}</td>
+                <td>{{item.product.brand}}/{{item.product.color}}/{{item.product.size}}</td>
+                <td>&#8377;{{item.product.finalprice}}</td>
+                <td><a href="/single-product/{{item.product.id}}/"><i class="fa fa-shopping-cart"></i></a></td>
+                <td><a href="/delete-wishlist/{{item.id}}/"><i class="fa fa-trash text-danger"></i></a></td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    {% else %}
+    <p class="text-center mt-3">No Items in Wishlist</p>
+    {% endif %}
+`</div>
 {% endblock %}
