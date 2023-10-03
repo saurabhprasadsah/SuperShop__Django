@@ -23,7 +23,8 @@ def homePage(Request):
 #     brands = Brand.objects.all().order_by("-id")
 #     return render(Request,"shop.html",{'products':products,'maincategory':maincategory,'subcategory':subcategory,'brands':brands,'mc':mc,'sc':sc,'br':br})
 
-#Function for shoppage
+
+# Function for shoppage
 def shopPage(Request, mc, sc, br):
     if mc == "All" and sc == "All" and br == "All":
         products = Product.objects.all().order_by("-id")
@@ -85,7 +86,6 @@ def shopPage(Request, mc, sc, br):
     # page_number = Request.GET.get("page")
     # page_obj = paginator.get_page(page_number)
 
-
     return render(
         Request,
         "shop.html",
@@ -100,30 +100,36 @@ def shopPage(Request, mc, sc, br):
         },
     )
 
-#function for aboutpage
+
+# function for aboutpage
 def aboutPage(Request):
     return render(Request, "about.html")
 
-#function for cartpage
+
+# function for cartpage
 @login_required(login_url="/login/")
 def cartPage(Request):
     return render(Request, "cart.html")
 
-#function for checkoutpage
+
+# function for checkoutpage
 @login_required(login_url="/login/")
 def checkoutPage(Request):
     return render(Request, "checkout.html")
 
-#function for confirmationpage
+
+# function for confirmationpage
 @login_required(login_url="/login/")
 def confirmationPage(Request):
     return render(Request, "confirmation.html")
 
-#function for contactpage
+
+# function for contactpage
 def contactPage(Request):
     return render(Request, "contact.html")
 
-#function for loginpage
+
+# function for loginpage
 def loginPage(Request):
     if Request.method == "POST":
         username = Request.POST.get("username")
@@ -140,7 +146,7 @@ def loginPage(Request):
     return render(Request, "login.html")
 
 
-#function for  signuppage
+# function for  signuppage
 def signupPage(Request):
     if Request.method == "POST":
         password = Request.POST.get("password")
@@ -168,72 +174,71 @@ def signupPage(Request):
     return render(Request, "signup.html")
 
 
-#function of profilepage
+# function of profilepage
 @login_required(login_url="/login/")
 def profilePage(Request):
     if Request.user.is_superuser:
         return HttpResponseRedirect("/admin/")
     buyer = Buyer.objects.get(username=Request.user.username)
     wishlist = Wishlist.objects.filter(buyer=buyer)
-    return render(Request, "profile.html", {"buyer": buyer,"wishlist":wishlist})
-    
+    return render(Request, "profile.html", {"buyer": buyer, "wishlist": wishlist})
 
-#function of updateprofilepage!
+
+# function of updateprofilepage!
 @login_required(login_url="/login/")
 def updateProfilePage(Request):
-    if(Request.user.is_superuser):
+    if Request.user.is_superuser:
         return HttpResponseRedirect("/admin/")
     buyer = Buyer.objects.get(username=Request.user.username)
-    if(Request.method=="POST"):
+    if Request.method == "POST":
         buyer.name = Request.POST.get("name")
-        buyer.emails = Request.POST.get("emails")
+        buyer.email = Request.POST.get("email")
         buyer.phone = Request.POST.get("phone")
         buyer.address = Request.POST.get("address")
         buyer.pin = Request.POST.get("pin")
         buyer.city = Request.POST.get("city")
         buyer.state = Request.POST.get("state")
-        if(Request.FILES.get("pic")):
+        if Request.FILES.get("pic"):
             buyer.pic = Request.FILES.get("pic")
         buyer.save()
         return HttpResponseRedirect("/profile")
-    return render(Request,"update-profile.html",{'buyer':buyer})
+    return render(Request, "update-profile.html", {"buyer": buyer})
 
 
-#Function will be single product
+# Function will be single product
 def singleProduct(Request, id):
     product = Product.objects.get(id=id)
     return render(Request, "single-product.html", {"product": product})
 
 
-#function will be addtowishlist
+# function will be addtowishlist
 @login_required(login_url="/login/")
-def addtowishlistPage(Request,id):
+def addtowishlistPage(Request, id):
     buyer = Buyer.objects.get(username=Request.user.username)
     product = Product.objects.get(id=id)
     try:
-        w=Wishlist.objects.get(product=product,buyer=buyer)
+        w = Wishlist.objects.get(product=product, buyer=buyer)
     except:
-        w= Wishlist()
-        w.product= product
-        w.buyer= buyer
-        w.save() 
-    return HttpResponseRedirect("/profile")   
+        w = Wishlist()
+        w.product = product
+        w.buyer = buyer
+        w.save()
+    return HttpResponseRedirect("/profile")
 
 
-#Use decorator function to inhance the function using wraping function.
+# Use decorator function to inhance the function using wraping function.
 @login_required(login_url="/login/")
-def deletewishlist(Request,id):
+def deletewishlist(Request, id):
     try:
-        w =Wishlist.objects.get(id=id)
+        w = Wishlist.objects.get(id=id)
         w.delete()
     except:
-        pass  
+        pass
 
-    return HttpResponseRedirect("/profile/")  
+    return HttpResponseRedirect("/profile/")
 
 
-
-#logoutPage
+# logoutPage
 def logoutPage(Request):
     logout(Request)
     return HttpResponseRedirect("/login/")
