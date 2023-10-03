@@ -6,7 +6,7 @@ from django.contrib.auth.decorators import login_required
 from .models import *
 
 
-# Create your views here.
+# Create your views here...
 def homePage(Request):
     products = Product.objects.all().order_by("id")[0:12]
     return render(Request, "index.html", {"products": products})
@@ -17,14 +17,13 @@ def homePage(Request):
 #         products= Product.objects.all().order_by("-id")
 #     elif(mc!="All" and sc=="All" and br=="All"):
 #         products= Product.objects.filter(maincategory=Maincategory.objects.get(name=mc)).order_by("-id")
-
 #     products = Product.objects.all()
 #     maincategory = Maincategory.objects.all().order_by("-id")
 #     subcategory = Subcategory.objects.all().order_by("-id")
 #     brands = Brand.objects.all().order_by("-id")
 #     return render(Request,"shop.html",{'products':products,'maincategory':maincategory,'subcategory':subcategory,'brands':brands,'mc':mc,'sc':sc,'br':br})
 
-#function for shoppage
+#Function for shoppage
 def shopPage(Request, mc, sc, br):
     if mc == "All" and sc == "All" and br == "All":
         products = Product.objects.all().order_by("-id")
@@ -85,6 +84,8 @@ def shopPage(Request, mc, sc, br):
     # paginator = Paginator(products, 12)
     # page_number = Request.GET.get("page")
     # page_obj = paginator.get_page(page_number)
+
+
     return render(
         Request,
         "shop.html",
@@ -197,10 +198,12 @@ def updateProfilePage(Request):
         return HttpResponseRedirect("/profile")
     return render(Request,"update-profile.html",{'buyer':buyer})
 
+
 #Function will be single product
 def singleProduct(Request, id):
     product = Product.objects.get(id=id)
     return render(Request, "single-product.html", {"product": product})
+
 
 #function will be addtowishlist
 @login_required(login_url="/login/")
@@ -227,17 +230,6 @@ def deletewishlist(Request,id):
         pass  
 
     return HttpResponseRedirect("/profile/")  
-
-
-
-
-
-
-
-
-
-
-
 
 
 
