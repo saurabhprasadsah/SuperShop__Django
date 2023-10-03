@@ -172,9 +172,7 @@ def signupPage(Request):
 def profilePage(Request):
     if Request.user.is_superuser:
         return HttpResponseRedirect("/admin/")
-    username = Request.user.username
-    
-    buyer = Buyer.objects.get(username=username)
+    buyer = Buyer.objects.get(username=Request.user.username)
     wishlist = Wishlist.objects.filter(buyer=buyer)
     return render(Request, "profile.html", {"buyer": buyer,"wishlist":wishlist})
     
@@ -207,18 +205,15 @@ def singleProduct(Request, id):
 #function will be addtowishlist
 @login_required(login_url="/login/")
 def addtowishlistPage(Request,id):
+    buyer = Buyer.objects.get(username=Request.user.username)
+    product = Product.objects.get(id=id)
     try:
-        buyer = Buyer.objects.get(username=Request.user.username)
-        product = Product.objects.get(id=id)
-        try:
-            w=Wishlist.objects.get(product=product,buyer=buyer)
-        except:
-            w= Wishlist()
-            w.product= product
-            w.buyer= buyer
-            w.save() 
+        w=Wishlist.objects.get(product=product,buyer=buyer)
     except:
-        pass 
+        w= Wishlist()
+        w.product= product
+        w.buyer= buyer
+        w.save() 
     return HttpResponseRedirect("/profile")   
 
 
