@@ -94,7 +94,8 @@
                 <td>{{item.product.name}}</td>
                 <td>{{item.product.brand}}/{{item.product.color}}/{{item.product.size}}</td>
                 <td>&#8377;{{item.product.finalprice}}</td>
-                <td><a href="/single-product/{{item.product.id}}/"><i class="fa fa-shopping-cart"></i></a></td>
+                <tr><a href="/single-product/{{item.product.id}}/"><i class="fa fa-shopping-cart"></i></a></tr>td>
+                
                 <td><a href="/delete-wishlist/{{item.id}}/"><i class="fa fa-trash text-danger"></i></a></td>
             </tr>
             {% endfor %}
