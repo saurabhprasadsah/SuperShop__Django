@@ -2,6 +2,7 @@ from django.shortcuts import render, HttpResponseRedirect
 from django.contrib.messages import success, error
 from django.contrib.auth.models import User
 from django.contrib.auth import login, logout, authenticate
+from django.contrib.auth.decorators import login_required
 from .models import *
 
 
@@ -103,14 +104,17 @@ def aboutPage(Request):
     return render(Request, "about.html")
 
 #function for cartpage
+@login_required(login_url="/login/")
 def cartPage(Request):
     return render(Request, "cart.html")
 
 #function for checkoutpage
+@login_required(login_url="/login/")
 def checkoutPage(Request):
     return render(Request, "checkout.html")
 
 #function for confirmationpage
+@login_required(login_url="/login/")
 def confirmationPage(Request):
     return render(Request, "confirmation.html")
 
@@ -164,18 +168,19 @@ def signupPage(Request):
 
 
 #function of profilepage
+@login_required(login_url="/login/")
 def profilePage(Request):
     if Request.user.is_superuser:
         return HttpResponseRedirect("/admin/")
     username = Request.user.username
-    try:
-        buyer = Buyer.objects.get(username=username)
-        wishlist = Wishlist.objects.filter(buyer=buyer)
-        return render(Request, "profile.html", {"buyer": buyer,"wishlist":wishlist})
-    except:
-        return HttpResponseRedirect("/login/")
+    
+    buyer = Buyer.objects.get(username=username)
+    wishlist = Wishlist.objects.filter(buyer=buyer)
+    return render(Request, "profile.html", {"buyer": buyer,"wishlist":wishlist})
+    
 
 #function of updateprofilepage!
+@login_required(login_url="/login/")
 def updateProfilePage(Request):
     if(Request.user.is_superuser):
         return HttpResponseRedirect("/admin/")
@@ -200,6 +205,7 @@ def singleProduct(Request, id):
     return render(Request, "single-product.html", {"product": product})
 
 #function will be addtowishlist
+@login_required(login_url="/login/")
 def addtowishlistPage(Request,id):
     try:
         buyer = Buyer.objects.get(username=Request.user.username)
@@ -216,6 +222,8 @@ def addtowishlistPage(Request,id):
     return HttpResponseRedirect("/profile")   
 
 
+#Use decorator function to inhance the function using wraping function.
+@login_required(login_url="/login/")
 def deletewishlist(Request,id):
     try:
         w =Wishlist.objects.get(id=id)
