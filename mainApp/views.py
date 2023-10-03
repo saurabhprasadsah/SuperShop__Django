@@ -23,7 +23,7 @@ def homePage(Request):
 #     brands = Brand.objects.all().order_by("-id")
 #     return render(Request,"shop.html",{'products':products,'maincategory':maincategory,'subcategory':subcategory,'brands':brands,'mc':mc,'sc':sc,'br':br})
 
-
+#function for shoppage
 def shopPage(Request, mc, sc, br):
     if mc == "All" and sc == "All" and br == "All":
         products = Product.objects.all().order_by("-id")
@@ -98,27 +98,27 @@ def shopPage(Request, mc, sc, br):
         },
     )
 
-
+#function for aboutpage
 def aboutPage(Request):
     return render(Request, "about.html")
 
-
+#function for cartpage
 def cartPage(Request):
     return render(Request, "cart.html")
 
-
+#function for checkoutpage
 def checkoutPage(Request):
     return render(Request, "checkout.html")
 
-
+#function for confirmationpage
 def confirmationPage(Request):
     return render(Request, "confirmation.html")
 
-
+#function for contactpage
 def contactPage(Request):
     return render(Request, "contact.html")
 
-
+#function for loginpage
 def loginPage(Request):
     if Request.method == "POST":
         username = Request.POST.get("username")
@@ -135,7 +135,7 @@ def loginPage(Request):
     return render(Request, "login.html")
 
 
-# signup page
+#function for  signuppage
 def signupPage(Request):
     if Request.method == "POST":
         password = Request.POST.get("password")
@@ -215,7 +215,7 @@ def addtowishlistPage(Request,id):
         pass 
     return HttpResponseRedirect("/profile")   
 
-
+#logoutPage
 def logoutPage(Request):
     logout(Request)
     return HttpResponseRedirect("/login/")

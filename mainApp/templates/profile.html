@@ -85,8 +85,8 @@
                 <th>Name</th>
                 <th>Brand/Color/Size</th>
                 <th>Price</th>
-                <th></th>
-                <th></th>
+                <th>shopping-cart</th>
+                <th>Delete item</th>
             </tr>
             {% for item in wishlist %}
             <tr>
@@ -94,8 +94,7 @@
                 <td>{{item.product.name}}</td>
                 <td>{{item.product.brand}}/{{item.product.color}}/{{item.product.size}}</td>
                 <td>&#8377;{{item.product.finalprice}}</td>
-                <tr><a href="/single-product/{{item.product.id}}/"><i class="fa fa-shopping-cart"></i></a></tr>td>
-                
+                <td><a href="/single-product/{{item.product.id}}/"><i class="fa fa-shopping-cart"></i></a></td>
                 <td><a href="/delete-wishlist/{{item.id}}/"><i class="fa fa-trash text-danger"></i></a></td>
             </tr>
             {% endfor %}
