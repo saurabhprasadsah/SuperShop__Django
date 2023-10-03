@@ -39,6 +39,10 @@ urlpatterns = [
 
     path('add-to-wishlist/<int:id>/',mainApp.addtowishlistPage, name="add-to-wishlist"),
 
+    path('delete-wishlist/<int:id>/',mainApp.deletewishlist, name="deletewishlist"),
+    
+
+
 
 
 
