@@ -117,9 +117,13 @@ def addtocartPage(Request):
         else:
             try:
                 p = Product.objects.get(id=id)
-                cart ={str(id):{'product':id,'name':p.name,'brand': p.brand,'color':p.color,
+                cart ={str(id):{'product':id,'name':p.name,'brand':
+                                 p.brand.name,
+                                'color':p.color,
                                 'size':p.size,'price':p.finalprice,
-                                'qty':qty,'total': qty*p.finalprice, 'pic':p.pic1.url}}
+                                'qty':int(qty),
+                                'total':int(qty)*p.finalprice,
+                                'pic':p.pic1.url}}
             except:
                 cart ={}
         Request.session['cart'] =cart
@@ -132,6 +136,7 @@ def addtocartPage(Request):
 @login_required(login_url="/login/")
 def cartPage(Request):
     cart = Request.session.get('cart', None)
+
     print(cart,"\n\n\n")
 
     return render(Request, "cart.html")

@@ -26,7 +26,11 @@ urlpatterns = [
     path('',mainApp.homePage, name="home"),
     path('about/',mainApp.aboutPage, name="about"),
     path('checkout/',mainApp.checkoutPage, name="checkout"),
+    
+    path('add-to-cart/',mainApp.addtocartPage, name="add-to-cart"),
     path('cart/',mainApp.cartPage, name="cart"),
+
+
     path('confirmation/',mainApp.confirmationPage, name="confirmation"),
     path('contact/',mainApp.contactPage, name="contact"),
     path('login/',mainApp.loginPage, name="login"),
@@ -40,7 +44,7 @@ urlpatterns = [
     path('add-to-wishlist/<int:id>/',mainApp.addtowishlistPage, name="add-to-wishlist"),
 
     path('delete-wishlist/<int:id>/',mainApp.deletewishlist, name="deletewishlist"),
-    
+
 
 
 

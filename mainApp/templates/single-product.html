@@ -94,7 +94,9 @@
               class="text-danger">&#8377;{{product.baseprice}}</del>&#8377;{{product.finalprice}}<sup>{{product.discount}}%off</sup>
           </h5>
 
-          <form action="/add-to-cart/" method="post">
+          <form action="{% url 'add-to-cart'%}" method="post">
+            {% csrf_token %}
+                <input  type="hidden" name="id" value="{{product.id}}">
             <div class="card_area">
               <div class="product_count_area">
                 <p>Quantity</p>
@@ -107,7 +109,6 @@
               <div class="add_to_cart">
                 <button type="submit" class="btn_3"> <i class="fa fa-shopping-cart"></i> add to cart</button>
                 <a type="submit" class="btn_3" href="/add-to-wishlist/{{product.id}}/"><i class="fa fa-heart"></i> add to wishlist</a>
-
               </div>
             </div>
           </form>
