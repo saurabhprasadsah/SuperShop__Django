@@ -112,7 +112,6 @@ def addtocartPage(Request):
         cart = Request.session.get('cart', None)
         qty = Request.POST.get("qty")
         id = Request.POST.get("id")
-
         if(cart):
             pass
         else:
@@ -130,13 +129,12 @@ def addtocartPage(Request):
 
 
     
-
-    
-
-
 # function for cartpage
 @login_required(login_url="/login/")
 def cartPage(Request):
+
+    cart = Request.session.get('cart', None)
+    print(cart,"\n\n\n")
 
     return render(Request, "cart.html")
 
