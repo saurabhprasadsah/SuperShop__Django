@@ -124,7 +124,6 @@ def addtocartPage(Request):
                 cart ={}
         Request.session['cart'] =cart
         Request.session.set_expiry(60*60*24*30)
-    
     return HttpResponseRedirect("/cart/")
 
 
