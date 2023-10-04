@@ -120,9 +120,9 @@
                 </div>
             </div>
         </div>
-        <div class="banner_img">
+    <div class="banner_img">
             <img src="{% static 'banner/banner1.jpg' %}" alt="#" class="img-fluid">
-        </div>
+    </div>
     </section>
     <!-- banner part start-->
 
@@ -201,7 +201,7 @@
                         </div>
                        </a>
                         <h4 style="height: 50px;"> <a href="/single-product/{{item.id}}">{{item.name}}</a></h4>
-                        <p><del class="text-danger">&#8377;{{item.baseprice}}</del> &#8377;{{item.finalprice}} <sup class="text-success">{{item.discount}}%off</sup></p>
+                        <p><del class="text-danger">&#8377;{{item.baseprice}}</del> &#8377;{{item.finalprice}}<sup class="text-success">{{item.discount}}%off</sup></p>
                     </div>
                 </div>
                 {% endfor %}
