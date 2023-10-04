@@ -1,12 +1,9 @@
 {% extends 'index.html' %}
 {% load static %}
 
-
-
 {% block title %}
 <title> SuperShop | Buyer Profile</title>
 {% endblock %}
-
 
 {% block body %}
 <!-- breadcrumb part start-->
@@ -67,7 +64,6 @@
                     <th>State:</th>
                     <td>{{buyer.state}}</td>
                 </tr>
-
                 <tr>
                     <td colspan="2"><a href="{% url 'updateProfile'  %}" class="btn_3">Update
                             Profile </a></td>
@@ -103,5 +99,5 @@
     {% else %}
     <p class="text-center mt-3">No Items in Wishlist</p>
     {% endif %}
-`</div>
+</div>
 {% endblock %}
