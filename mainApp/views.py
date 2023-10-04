@@ -107,16 +107,32 @@ def aboutPage(Request):
 
 
 
-def addtocartPage(Request,id):
+def addtocartPage(Request):
+    if(Request.method == "POST"):        
+        cart = Request.session.get('cart', None)
+        qty = Request.POST.get("qty")
+        id = Request.POST.get("id")
+
+        if(cart):
+            pass
+        else:
+            try:
+                p = Product.objects.get(id=id)
+                cart ={str(id):{'product':id,'name':p.name,'brand': p.brand,'color':p.color,
+                                'size':p.size,'price':p.finalprice,
+                                'qty':qty,'total': qty*p.finalprice, 'pic':p.pic1.url}}
+            except:
+                cart ={}
+        Request.session['cart'] =cart
+        Request.session.set_expiry(60*60*24*30)
     
-    cart = Request.session.get('cart', None)
-    if(cart):
-        pass
-    else:
-        cart ={str(id):}
+    return HttpResponseRedirect("/cart/")
+
+
     
 
-    return render(Request,"addtocartpage.html")
+    
+
 
 # function for cartpage
 @login_required(login_url="/login/")
