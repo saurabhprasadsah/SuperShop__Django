@@ -132,7 +132,6 @@ def addtocartPage(Request):
 # function for cartpage
 @login_required(login_url="/login/")
 def cartPage(Request):
-
     cart = Request.session.get('cart', None)
     print(cart,"\n\n\n")
 
