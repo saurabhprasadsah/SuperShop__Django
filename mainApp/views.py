@@ -106,9 +106,22 @@ def aboutPage(Request):
     return render(Request, "about.html")
 
 
+
+def addtocartPage(Request,id):
+    
+    cart = Request.session.get('cart', None)
+    if(cart):
+        pass
+    else:
+        cart ={str(id):}
+    
+
+    return render(Request,"addtocartpage.html")
+
 # function for cartpage
 @login_required(login_url="/login/")
 def cartPage(Request):
+
     return render(Request, "cart.html")
 
 
