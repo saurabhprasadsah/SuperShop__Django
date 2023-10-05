@@ -22,9 +22,9 @@
 
 <!--================Cart Area =================-->
 <div class="container fluid my-3">
-  <table>
+  <table class="table">
     <thead>
-      <th></th>
+      <th>Image</th>
       <th>Name</th>
       <th>Brand/Color/Size</th>
       <th>Price</th>
@@ -34,23 +34,23 @@
       <th>Total</th>
     </thead>
     <tbody>
-      {% for key,value in cart.items %}
+      {% for key, value in cart.items %}
       <tr>
-        <th><a href="{{value.pic}}" target="_blank">
+        <td><a href="{{value.pic}}" target="_blank">
         <img src="{{value.pic}}" height="80px" width="80px" class="rounded"  alt="">
-        </a></th>
+        </a></td>
 
-        <th>{{value.name}}</th>
-        <th>{{value.brand}}/{{value.color}}/{{value.size}}</th>
+        <td>{{value.name}}</td>
+        <td>{{value.brand}}/{{value.color}}/{{value.size}}</td>
 
-        <th>&#8377;{{value.price}}</th>
-        <th><a href="/update.cart/{{key}}/dec/"><i class="fa fa-minus text-dark"></i></a></th>
-        <th>{{value.qty}}</th>
+        <td>&#8377;{{value.price}}</td>
+        <td><a href="/update.cart/{{key}}/dec/"><i class="fa fa-minus text-dark"></i></a></td>
+        <td>{{value.qty}}</td>
 
-        <th><a href="/update.cart/{{key}}/inc/"><i class="fa fa-plus text-dark"></i></a></th>
-        <th>&#8377;{{value.total}}</th>
+        <td><a href="/update.cart/{{key}}/inc/"><i class="fa fa-plus text-dark"></i></a></td>
+        <td>&#8377;{{value.total}}</td>
 
-        <th><a href="/delete-cart/{{key}}/"><i class="fa fa-trash text-danger"></i></a></th>
+        <td><a href="/delete-cart/{{key}}/"><i class="fa fa-trash text-danger"></i></a></td>
 
       </tr>
 
