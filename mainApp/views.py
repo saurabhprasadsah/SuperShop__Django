@@ -203,8 +203,24 @@ def checkoutPage(Request):
 
        if(Request.method =="POST"):
             mode = Request.POST.get("mode")
-        
-       return render(Request, "checkout.html",{'buyer':buyer,'cart':cart,'subtotal':subtotal,'shipping':shipping,'total':total})
+            Checkout = checkout()
+            Checkout.buyer = buyer
+            Checkout.subtotal = subtotal
+            Checkout.total = total
+            Checkout.shipping =shipping
+            Checkout.save()
+            for key,value in cart.items():
+                p = Product.objects.get(id= int(key))
+                cp = CheckoutProdcut()
+                cp.Checkout = Checkout
+                cp.product = p
+                cp.qty = value['qty']
+                cp.total =value['total']
+                cp.save()
+            Request.session['/cart/']= {} 
+            return HttpResponseRedirect("/confirmation/")    
+
+       return render(Request,"checkout.html",{'buyer':buyer,'cart':cart,'subtotal':subtotal,'shipping':shipping,'total':total})
    except:
        return HttpResponseRedirect("/admin/")   
 
