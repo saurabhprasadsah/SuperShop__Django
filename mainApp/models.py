@@ -75,11 +75,60 @@ class Wishlist(models.Model):
           return str(self.id)+" / "+self.buyer.username
     
 
+OrderStatusOptions=((0, "order is Place"),
+                   (1,"order is Packed"),
+                   (2,"order is Dispatched"),
+                   (3,"Dispatched"),
+                   (4,"out for Delivery"),
+                   (5,"Delivered")
+                   )
+PaymentStatusOptions=(
+                   (0,"Pending"),
+                   (1,"Done"))
 
+PaymentModeOptions=(
+                   (0,"COD"),
+                   (1,"NetBanking"))
 class checkout(models.Model):
     id = models.AutoField(primary_key=True)
     buyer = models.ForeignKey(Buyer,on_delete=models.CASCADE)
+    orderstatus =models.IntegerField(choices=OrderStatusOptions,default=0)
+    orderstatus =models.IntegerField(choices=OrderStatusOptions,default=0)
+    paymentstatus =models.IntegerField(choices=PaymentStatusOptions,default=0)
+    paymentmode =models.IntegerField(choices=PaymentModeOptions,default=0)
+    subtotal = models.IntegerField()
+    shipping = models.IntegerField()
+    total = models.IntegerField()
+    rppid = models.CharField(max_length=20,default="",null=True,blank=True)
+    date= models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return str(self.id)+" "+ self.buyer.username
     
+
+class CheckoutProdcut(models.Model):
+    id = models.AutoField(primary_key=True)
+    checkout= models.ForeignKey(checkout,on_delete=models.CASCADE)
+    product= models.ForeignKey(Product, on_delete=models.CASCADE)
+    qty =models.IntegerField()
+    total= models.ImageField()
+
+    def __str__(self):
+        return str(self.id)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
