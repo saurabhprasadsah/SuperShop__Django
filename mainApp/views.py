@@ -209,6 +209,7 @@ def checkoutPage(Request):
             Checkout.total = total
             Checkout.shipping =shipping
             Checkout.save()
+
             for key,value in cart.items():
                 p = Product.objects.get(id= int(key))
                 cp = CheckoutProdcut()
@@ -217,8 +218,10 @@ def checkoutPage(Request):
                 cp.qty = value['qty']
                 cp.total =value['total']
                 cp.save()
+
             Request.session['/cart/']= {} 
             return HttpResponseRedirect("/confirmation/")    
+
 
        return render(Request,"checkout.html",{'buyer':buyer,'cart':cart,'subtotal':subtotal,'shipping':shipping,'total':total})
    except:
