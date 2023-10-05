@@ -83,17 +83,18 @@
                   </tr>
                   <tr>
                     {% for item in cart.values %}
-                    <tr>
-                      <td>{{item.name}}</td>
-                      <td>&#8377;{{item.price}} X {{item.qty}}</td>
-                      <td>&#8377;{{item.total}}</td>
-                    </tr>
-                    {% endfor %}
+                  <tr>
+                    <td>{{item.name}}</td>
+                    <td>&#8377;{{item.price}} X {{item.qty}}</td>
+                    <td>&#8377;{{item.total}}</td>
+                  </tr>
+                  {% endfor %}
                   </tr>
                 </table>
               </li>
-             
+
             </ul>
+            <hr>
             <ul class="list list_2">
               <li>
                 <a href="#">Subtotal
@@ -112,37 +113,30 @@
               </li>
 
             </ul>
-            <div class="payment_item">
-              <div class="radion_btn">
-                <input type="radio" id="f-option5" name="selector" />
-                <label for="f-option5">Check payments</label>
-                <div class="check"></div>
+            <hr>
+            <form action="" method="post">
+              {% csrf_token %}
+              <div class="payment_item">
+                <label class="mt-3">Payment Mode</label>
+                <div class="radion_btn">
+                  <input type="radio" id="COD" name="mode" checked />
+                  <label for="COD">COD</label>
+                  <div class="check"></div>
+                </div>  
+                  <div class="payment_item active">
+                    <div class="radion_btn">
+                      <input type="radio" id="Net-banking" name="mode" />
+                      <label for="Net-banking">Net-banking/card/UPI </label>
+                      <div class="check"></div>
+                    </div>
+                  </div>
+                  <button type="submit" class="btn_3" href="#">Proceed to Place order </button>
+                </div>
               </div>
-             
-            </div>
-            <div class="payment_item active">
-              <div class="radion_btn">
-                <input type="radio" id="f-option6" name="selector" />
-                <label for="f-option6">Paypal </label>
-                <img src="{% static 'img/product/single-product/card.jpg' %}" alt="" />
-                <div class="check"></div>
-              </div>
-              <p>
-                Please send a check to Store Name, Store Street, Store Town,
-                Store State / County, Store Postcode.
-              </p>
-            </div>
-            <div class="creat_account">
-              <input type="checkbox" id="f-option4" name="selector" />
-              <label for="f-option4">I’ve read and accept the </label>
-              <a href="#">terms & conditions*</a>
-            </div>
-            <a class="btn_3" href="#">Proceed to Paypal</a>
+            </form>
           </div>
         </div>
       </div>
-    </div>
-  </div>
 </section>
 <!--================End Checkout Area =================-->
 

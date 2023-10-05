@@ -76,7 +76,10 @@ class Wishlist(models.Model):
     
 
 
-
+class checkout(models.Model):
+    id = models.AutoField(primary_key=True)
+    buyer = models.ForeignKey(Buyer,on_delete=models.CASCADE)
+    
 
 
 

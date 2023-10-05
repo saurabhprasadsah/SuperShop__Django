@@ -200,7 +200,11 @@ def checkoutPage(Request):
             if(subtotal>0 and subtotal<1000):
                 shipping =150
             total = subtotal+shipping
-            return render(Request, "checkout.html",{'buyer':buyer,'cart':cart,'subtotal':subtotal,'shipping':shipping,'total':total})
+
+       if(Request.method =="POST"):
+            mode = Request.POST.get("mode")
+        
+       return render(Request, "checkout.html",{'buyer':buyer,'cart':cart,'subtotal':subtotal,'shipping':shipping,'total':total})
    except:
        return HttpResponseRedirect("/admin/")   
 
