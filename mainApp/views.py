@@ -185,7 +185,7 @@ def updateCartPage(Request,id,op):
 
 
 
-# function for checkoutpage
+# function for checkoutpage and billing total
 @login_required(login_url="/login/")
 def checkoutPage(Request):
    try:
