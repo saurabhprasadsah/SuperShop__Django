@@ -22,41 +22,53 @@
 
 <!--================Cart Area =================-->
 <div class="container fluid my-3">
-  <table class="table">
-    <thead>
-      <th>Image</th>
-      <th>Name</th>
-      <th>Brand/Color/Size</th>
-      <th>Price</th>
-      <th> </th>
-      <th>Qty</th>
-      <th> </th>
-      <th>Total</th>
-    </thead>
-    <tbody>
-      {% for key, value in cart.items %}
-      <tr>
-        <td><a href="{{value.pic}}" target="_blank">
-        <img src="{{value.pic}}" height="80px" width="80px" class="rounded"  alt="">
-        </a></td>
+  {% if cart %}
+  <table class="responsive">
+    <table class="table">
+      <thead>
+        <th>Image</th>
+        <th>Name</th>
+        <th>Brand/Color/Size</th>
+        <th>Price</th>
+        <th> </th>
+        <th>Qty</th>
+        <th> </th>
+        <th>Total</th>
+      </thead>
+      <tbody>
+        {% for key, value in cart.items %}
+        <tr>
+          <td><a href="{{value.pic}}" target="_blank">
+              <img src="{{value.pic}}" height="80px" width="80px" class="rounded" alt="">
+            </a></td>
 
-        <td>{{value.name}}</td>
-        <td>{{value.brand}}/{{value.color}}/{{value.size}}</td>
+          <td>{{value.name}}</td>
+          <td>{{value.brand}}/{{value.color}}/{{value.size}}</td>
 
-        <td>&#8377;{{value.price}}</td>
-        <td><a href="/update.cart/{{key}}/dec/"><i class="fa fa-minus text-dark"></i></a></td>
-        <td>{{value.qty}}</td>
+          <td>&#8377;{{value.price}}</td>
+          <td><a class="button btn-sm button-primary" href="/update.cart/{{key}}/dec/"><i
+                class="fa fa-minus text-dark"></i></a></td>
+          <td>{{value.qty}}</td>
 
-        <td><a href="/update.cart/{{key}}/inc/"><i class="fa fa-plus text-dark"></i></a></td>
-        <td>&#8377;{{value.total}}</td>
+          <td><a class="button btn-sm button-primary" href="/update.cart/{{key}}/inc/"><i
+                class="fa fa-plus text-dark"></i></a></td>
+          <td>&#8377;{{value.total}}</td>
 
-        <td><a href="/delete-cart/{{key}}/"><i class="fa fa-trash text-danger"></i></a></td>
+          <td><a class="button btn-sm button-primary" href="/delete-cart/{{key}}/"><i
+                class="fa fa-trash text-light"></i></a></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+</div>
+{% else %}
+<div class="my-5 text-center">
+  <p>No items in cart </p>
+  <a href="/shop/All/All/All/"class="btn_3">Shop Now</a>
+</div>
 
-      </tr>
+{% endif %}
 
-      {% endfor %}  
-    </tbody>  
-  </table>
 </div>
 
 

@@ -150,7 +150,33 @@ def addtocartPage(Request):
 @login_required(login_url="/login/")
 def cartPage(Request):
     cart = Request.session.get('cart', None)
+    subtotal = 0
+    shipping = 0
+    total = 0
+    if(cart):
+        for value in cart.values():
+            subtotal= subtotal + value['total']
+        if(subtotal>0 and subtotal<1000):
+            shipping =150
+        
+        total = subtotal+shipping
+    else:
+
+
     return render(Request, "cart.html",{'cart':cart})
+
+
+def deletecartPage(Request,id):
+    cart = Request.session.get('cart',None)
+    if(cart):
+        del cart[id]
+        Request.session['cart']=cart
+        
+    else:
+        pass
+    return HttpResponseRedirect("/cart/")
+
+
 
 
 # function for checkoutpage
