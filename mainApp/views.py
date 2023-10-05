@@ -94,7 +94,7 @@ def aboutPage(Request):
     return render(Request, "about.html")
 
 
-
+#function will be addtocartpage
 def addtocartPage(Request):
     if(Request.method == "POST"):   
         cart = Request.session.get('cart', None)
@@ -134,7 +134,7 @@ def addtocartPage(Request):
 
 
     
-# function for cartpage
+# function for only cartpage 
 @login_required(login_url="/login/")
 def cartPage(Request):
     cart = Request.session.get('cart', None)
