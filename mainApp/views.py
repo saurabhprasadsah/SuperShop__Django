@@ -151,7 +151,7 @@ def cartPage(Request):
 
     return render(Request, "cart.html",{'cart':cart,'subtotal':subtotal,'shipping':shipping,'total':total})
 
-
+#function will be deletecartpage
 def deletecartPage(Request,id):
     cart = Request.session.get('cart',None)
     if(cart):
@@ -162,6 +162,8 @@ def deletecartPage(Request,id):
         pass
     return HttpResponseRedirect("/cart/")
 
+
+#function willbe updatecartpage
 def updateCartPage(Request,id,op):
     cart = Request.session.get('cart',None)
     if(cart):
