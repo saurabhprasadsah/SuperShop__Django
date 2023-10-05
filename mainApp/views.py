@@ -160,16 +160,35 @@ def cartPage(Request):
             shipping =150
         
         total = subtotal+shipping
-    else:
 
-
-    return render(Request, "cart.html",{'cart':cart})
+    return render(Request, "cart.html",{'cart':cart,'subtotal':subtotal,'shipping':shipping,'total':total})
 
 
 def deletecartPage(Request,id):
     cart = Request.session.get('cart',None)
     if(cart):
         del cart[id]
+        Request.session['cart']=cart
+        
+    else:
+        pass
+    return HttpResponseRedirect("/cart/")
+
+def updatecartPage(Request,id,op):
+    cart = Request.session.get('cart',None)
+    if(cart):
+        item = cart[id]
+        if(op=="dec" and item['qty']==1):
+          return HttpResponseRedirect("/cart/")
+        else:
+            if(op=="dec"):
+                item['qty'] =item['qty']-1
+                item['total']=item['total']-item['price']
+
+            else:
+                 item['qty'] =item['qty']+1
+                 item['total']=item['total']+item['price']
+        cart['id']=item
         Request.session['cart']=cart
         
     else:

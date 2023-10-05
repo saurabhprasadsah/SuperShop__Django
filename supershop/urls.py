@@ -31,6 +31,8 @@ urlpatterns = [
     path('cart/',mainApp.cartPage, name="cart"),
 
     path('delete-cart/<str:id>/',mainApp.deletecartPage, name="delete-cart"),
+    path('update-cart/<str:id>/<str:op>/',mainApp.updatecartPage, name="update-cart"),
+
 
 
 
