@@ -75,7 +75,7 @@
             <h2>Your Order</h2>
             <ul class="list">
               <li>
-                <table>
+                <table class="table table-bordered">
                   <tr>
                     <th>Product</th>
                     <th>Price X Qty</th>
@@ -83,7 +83,11 @@
                   </tr>
                   <tr>
                     {% for item in cart.values %}
-
+                    <tr>
+                      <td>{{item.name}}</td>
+                      <td>&#8377;{{item.price}} X {{item.qty}}</td>
+                      <td>&#8377;{{item.total}}</td>
+                    </tr>
                     {% endfor %}
                   </tr>
                 </table>
@@ -93,17 +97,17 @@
             <ul class="list list_2">
               <li>
                 <a href="#">Subtotal
-                  <span>$2160.00</span>
+                  <span>&#8377; {{subtotal}}</span>
                 </a>
               </li>
               <li>
                 <a href="#">Shipping
-                  <span>Flat rate: $50.00</span>
+                  <span>&#8377;{{shipping}}</span>
                 </a>
               </li>
               <li>
                 <a href="#">Total
-                  <span>$2210.00</span>
+                  <span>&#8377;{{total}}</span>
                 </a>
               </li>
 
@@ -114,10 +118,7 @@
                 <label for="f-option5">Check payments</label>
                 <div class="check"></div>
               </div>
-              <p>
-                Please send a check to Store Name, Store Street, Store Town,
-                Store State / County, Store Postcode.
-              </p>
+             
             </div>
             <div class="payment_item active">
               <div class="radion_btn">
