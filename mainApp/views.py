@@ -188,7 +188,21 @@ def updateCartPage(Request,id,op):
 # function for checkoutpage
 @login_required(login_url="/login/")
 def checkoutPage(Request):
-    return render(Request, "checkout.html")
+   try:
+       buyer = Buyer.objects.get(username=Request.user.username)
+       cart = Request.session.get('cart', None)
+       subtotal = 0
+       shipping = 0
+       total = 0
+       if(cart):
+            for value in cart.values():
+                subtotal= subtotal + value['total']
+            if(subtotal>0 and subtotal<1000):
+                shipping =150
+            total = subtotal+shipping
+            return render(Request, "checkout.html",{'buyer':buyer,'cart':cart,'subtotal':subtotal,'shipping':shipping,'total':total})
+   except:
+       return HttpResponseRedirect("/admin/")   
 
 
 # function for confirmationpage
