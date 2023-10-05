@@ -35,22 +35,27 @@
     </thead>
     <tbody>
       {% for key,value in cart.items %}
-      <th><a href="{{value.pic}}" target="_blank">
-      <img src="{{value.pic}}" height="80px" width="80px" class="rounded"  alt="">
-       </a></th>
+      <tr>
+        <th><a href="{{value.pic}}" target="_blank">
+        <img src="{{value.pic}}" height="80px" width="80px" class="rounded"  alt="">
+        </a></th>
 
-      <th>{{value.name}}</th>
-      <th>{{value.brand}}/{{value.color}}/{{value.size}}</th>
+        <th>{{value.name}}</th>
+        <th>{{value.brand}}/{{value.color}}/{{value.size}}</th>
 
-      <th>&#8377;{{value.price}}</th>
-      <th><a href="/update.cart/{{key}}/dec/"><i class="fa fa-minus text-dark"></i></a> </th>
-      <th>{{value.qty}}</th>
+        <th>&#8377;{{value.price}}</th>
+        <th><a href="/update.cart/{{key}}/dec/"><i class="fa fa-minus text-dark"></i></a></th>
+        <th>{{value.qty}}</th>
 
-      <th><a href="/update.cart/{{key}}/inc/"><i class="fa fa-plus text-dark"></i></a> </th>
-      <th>&#8377;{{value.total}}</th>
-      <th></th>
+        <th><a href="/update.cart/{{key}}/inc/"><i class="fa fa-plus text-dark"></i></a></th>
+        <th>&#8377;{{value.total}}</th>
+
+        <th><a href="/delete-cart/{{key}}/"><i class="fa fa-trash text-danger"></i></a></th>
+
+      </tr>
+
       {% endfor %}  
-    </tbody>
+    </tbody>  
   </table>
 </div>
 
