@@ -12,18 +12,6 @@ def homePage(Request):
     return render(Request, "index.html", {"products": products})
 
 
-# def shopPage(Request,mc,sc,br):
-#     if(mc=="All" and sc=="All" and br=="All" ):
-#         products= Product.objects.all().order_by("-id")
-#     elif(mc!="All" and sc=="All" and br=="All"):
-#         products= Product.objects.filter(maincategory=Maincategory.objects.get(name=mc)).order_by("-id")
-#     products = Product.objects.all()
-#     maincategory = Maincategory.objects.all().order_by("-id")
-#     subcategory = Subcategory.objects.all().order_by("-id")
-#     brands = Brand.objects.all().order_by("-id")
-#     return render(Request,"shop.html",{'products':products,'maincategory':maincategory,'subcategory':subcategory,'brands':brands,'mc':mc,'sc':sc,'br':br})
-
-
 #Function for shoppage
 def shopPage(Request, mc, sc, br):
     if mc == "All" and sc == "All" and br == "All":
@@ -174,7 +162,7 @@ def deletecartPage(Request,id):
         pass
     return HttpResponseRedirect("/cart/")
 
-def updatecartPage(Request,id,op):
+def updateCartPage(Request,id,op):
     cart = Request.session.get('cart',None)
     if(cart):
         item = cart[id]
@@ -182,12 +170,11 @@ def updatecartPage(Request,id,op):
           return HttpResponseRedirect("/cart/")
         else:
             if(op=="dec"):
-                item['qty'] =item['qty']-1
-                item['total']=item['total']-item['price']
-
+                item['qty'] = item['qty']-1
+                item['total']= item['total']-item['price']
             else:
-                 item['qty'] =item['qty']+1
-                 item['total']=item['total']+item['price']
+                 item['qty'] = item['qty']+1
+                 item['total']= item['total']+item['price']
         cart['id']=item
         Request.session['cart']=cart
         

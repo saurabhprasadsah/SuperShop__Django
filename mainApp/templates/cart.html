@@ -46,12 +46,13 @@
           <td>{{value.brand}}/{{value.color}}/{{value.size}}</td>
 
           <td>&#8377;{{value.price}}</td>
-          <td><a class="button btn-sm button-primary" href="/update.cart/{{key}}/dec/"><i
-                class="fa fa-minus text-dark"></i></a></td>
-          <td>{{value.qty}}</td>
+          <td><a class="button btn-sm btn-primary" href="/update-cart/{{key}}/dec/"><i
+                class="fa fa-minus text-light"></i></a></td>
 
-          <td><a class="button btn-sm button-primary" href="/update.cart/{{key}}/inc/"><i
-                class="fa fa-plus text-dark"></i></a></td>
+
+          <td>{{value.qty}}</td>
+          <td><a class="button btn-sm btn-primary" href="/update-cart/{{key}}/inc/"><i
+            class="fa fa-plus text-light"></i></a></td>
           <td>&#8377;{{value.total}}</td>
 
           <td><a class="button btn-sm button-primary" href="/delete-cart/{{key}}/"><i
