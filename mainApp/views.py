@@ -230,7 +230,6 @@ def checkoutPage(Request):
             Request.session['/cart/']= {} 
             return HttpResponseRedirect("/confirmation/")    
 
-
        return render(Request,"checkout.html",{'buyer':buyer,'cart':cart,'subtotal':subtotal,'shipping':shipping,'total':total})
    except:
        return HttpResponseRedirect("/admin/")   
@@ -331,6 +330,7 @@ def singleProduct(Request, id):
     return render(Request, "single-product.html", {"product": product})
 
 
+
 # function will be addtowishlist
 # use for the decorator function
 @login_required(login_url="/login/")
@@ -355,7 +355,6 @@ def deletewishlist(Request, id):
         w.delete()
     except:
         pass
-
     return HttpResponseRedirect("/profile/")
 
 
