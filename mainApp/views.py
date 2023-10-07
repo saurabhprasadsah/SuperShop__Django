@@ -138,6 +138,7 @@ def addtocartPage(Request):
 
     
 # function for only cartpage 
+# use the decorator function 
 @login_required(login_url="/login/")
 def cartPage(Request):
     cart = Request.session.get('cart', None)
@@ -153,6 +154,7 @@ def cartPage(Request):
         total = subtotal+shipping
 
     return render(Request, "cart.html",{'cart':cart,'subtotal':subtotal,'shipping':shipping,'total':total})
+
 
 #function will be deletecartpage
 def deletecartPage(Request,id):
@@ -191,6 +193,7 @@ def updateCartPage(Request,id,op):
 
 
 # function for checkoutpage and billing total
+# use for the decorator function
 @login_required(login_url="/login/")
 def checkoutPage(Request):
    try:
