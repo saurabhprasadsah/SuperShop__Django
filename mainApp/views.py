@@ -293,6 +293,7 @@ def signupPage(Request):
 
 
 # function of profilepage
+# use for the decorator function 
 @login_required(login_url="/login/")
 def profilePage(Request):
     if Request.user.is_superuser:
@@ -303,6 +304,7 @@ def profilePage(Request):
 
 
 # function of updateprofilepage!
+# use for the decorator function
 @login_required(login_url="/login/")
 def updateProfilePage(Request):
     if Request.user.is_superuser:
@@ -330,6 +332,7 @@ def singleProduct(Request, id):
 
 
 # function will be addtowishlist
+# use for the decorator function
 @login_required(login_url="/login/")
 def addtowishlistPage(Request, id):
     buyer = Buyer.objects.get(username=Request.user.username)
@@ -357,6 +360,7 @@ def deletewishlist(Request, id):
 
 
 # logoutPage
+# onlu use for the logout page
 def logoutPage(Request):
     logout(Request)
     return HttpResponseRedirect("/login/")
