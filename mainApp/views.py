@@ -13,6 +13,9 @@ def homePage(Request):
 
 
 #Function for shoppage
+#mc means maincategory  
+#sc means subctegory
+#br means brnad
 def shopPage(Request, mc, sc, br):
     if mc == "All" and sc == "All" and br == "All":
         products = Product.objects.all().order_by("-id")
