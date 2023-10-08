@@ -98,6 +98,7 @@ def aboutPage(Request):
 
 
 #function will be addtocartpage
+# add cart the page
 def addtocartPage(Request):
     if(Request.method == "POST"):   
         cart = Request.session.get('cart', None)
