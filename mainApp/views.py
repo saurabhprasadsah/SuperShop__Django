@@ -169,6 +169,7 @@ def deletecartPage(Request,id):
 
 
 #function willbe updatecartpage
+#use id and id
 def updateCartPage(Request,id,op):
     cart = Request.session.get('cart',None)
     if(cart):
