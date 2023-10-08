@@ -193,7 +193,8 @@ def updateCartPage(Request,id,op):
 
 
 # function for checkoutpage and billing total
-# use for the decorator function
+# use for the decorator function and wrapper function
+
 @login_required(login_url="/login/")
 def checkoutPage(Request):
    try:
@@ -202,7 +203,7 @@ def checkoutPage(Request):
        subtotal = 0
        shipping = 0
        total = 0
-       
+
        if(cart):
             for value in cart.values():
                 subtotal= subtotal + value['total']
