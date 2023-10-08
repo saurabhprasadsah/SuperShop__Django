@@ -157,6 +157,7 @@ def cartPage(Request):
 
 
 #function will be deletecartpage
+# delete single cart page
 def deletecartPage(Request,id):
     cart = Request.session.get('cart',None)
     if(cart):
