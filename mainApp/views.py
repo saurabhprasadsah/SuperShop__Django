@@ -202,6 +202,7 @@ def checkoutPage(Request):
        subtotal = 0
        shipping = 0
        total = 0
+       
        if(cart):
             for value in cart.values():
                 subtotal= subtotal + value['total']
