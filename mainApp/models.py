@@ -89,7 +89,7 @@ PaymentStatusOptions=(
 PaymentModeOptions=(
                    (0,"COD"),
                    (1,"NetBanking"))
-class checkout(models.Model):
+class Checkout(models.Model):
     id = models.AutoField(primary_key=True)
     buyer = models.ForeignKey(Buyer,on_delete=models.CASCADE)
     orderstatus =models.IntegerField(choices=OrderStatusOptions,default=0)
@@ -106,9 +106,9 @@ class checkout(models.Model):
         return str(self.id)+" "+ self.buyer.username
     
 
-class CheckoutProdcut(models.Model):
+class CheckoutProduct(models.Model):
     id = models.AutoField(primary_key=True)
-    checkout= models.ForeignKey(checkout,on_delete=models.CASCADE)
+    checkout= models.ForeignKey(Checkout,on_delete=models.CASCADE)
     product= models.ForeignKey(Product, on_delete=models.CASCADE)
     qty =models.IntegerField()
     total= models.ImageField()

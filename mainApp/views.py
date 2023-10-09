@@ -164,7 +164,6 @@ def deletecartPage(Request,id):
     if(cart):
         del cart[id]
         Request.session['cart']=cart
-        
     else:
         pass
     return HttpResponseRedirect("/cart/")
@@ -197,45 +196,103 @@ def updateCartPage(Request,id,op):
 
 # function for checkoutpage and billing total
 # use for the decorator function and wrapper function
+#@login_required(login_url="/login/")
+# def checkoutPage(Request):
+#    try:
+#        buyer = Buyer.objects.get(username=Request.user.username)
+#        cart = Request.session.get('cart', None)
+#        subtotal = 0
+#        shipping = 0
+#        total = 0
+#        if(cart):
+#             for value in cart.values():
+#                 subtotal= subtotal + value['total']
+#             if(subtotal>0 and subtotal<1000):
+#                 shipping =150
+#             total = subtotal+shipping
+
+#        if(Request.method =="POST"):
+#             mode = Request.POST.get("mode")
+#             checkout = Checkout()
+#             checkout.buyer = buyer
+#             checkout.subtotal = subtotal
+#             checkout.total = total
+#             checkout.shipping = shipping
+#             checkout.save()
+
+#             for key,value in cart.items():
+#                 p = Product.objects.get(id= int(key))
+#                 cp = CheckoutProdcut()
+#                 cp.checkout = checkout
+#                 cp.product = p
+#                 cp.qty = value['qty']
+#                 cp.total =value['total']
+#                 cp.save()
+
+#             Request.session['/cart/']= {} 
+#             return HttpResponseRedirect("/confirmation/")    
+
+#        return render(Request,"checkout.html",{'buyer':buyer,'cart':cart,'subtotal':subtotal,'shipping':shipping,'total':total})
+#    except:
+#        return HttpResponseRedirect("/admin/")   
+
+
 @login_required(login_url="/login/")
 def checkoutPage(Request):
-   try:
-       buyer = Buyer.objects.get(username=Request.user.username)
-       cart = Request.session.get('cart', None)
-       subtotal = 0
-       shipping = 0
-       total = 0
-       if(cart):
+    try:
+        buyer = Buyer.objects.get(username=Request.user.username)
+        cart = Request.session.get('cart',None)
+        subtotal = 0
+        shipping = 0
+        total = 0
+        if(cart):
             for value in cart.values():
-                subtotal= subtotal + value['total']
+                subtotal = subtotal + value['total']
             if(subtotal>0 and subtotal<1000):
-                shipping =150
+                shipping = 150
             total = subtotal+shipping
 
-       if(Request.method =="POST"):
+        if(Request.method=="POST"):
             mode = Request.POST.get("mode")
-            Checkout = checkout()
-            Checkout.buyer = buyer
-            Checkout.subtotal = subtotal
-            Checkout.total = total
-            Checkout.shipping =shipping
-            Checkout.save()
+            checkout = Checkout()
+            checkout.buyer = buyer
+            checkout.subtotal = subtotal
+            checkout.total = total
+            checkout.shipping = shipping
+            checkout.save()
 
             for key,value in cart.items():
-                p = Product.objects.get(id= int(key))
-                cp = CheckoutProdcut()
-                cp.Checkout = Checkout
+                p = Product.objects.get(id=int(key))
+                cp = CheckoutProduct()
+                
+                cp.checkout = checkout
                 cp.product = p
                 cp.qty = value['qty']
-                cp.total =value['total']
+                cp.total = value['total']
                 cp.save()
+                Request.session['cart']={}
 
-            Request.session['/cart/']= {} 
-            return HttpResponseRedirect("/confirmation/")    
+        #     if(mode=="COD"):
+        #         return HttpResponseRedirect('/confirmation/'+str(checkout.id)+"/")
+        #     else:
+        #         orderAmount = checkout.total*100
+        #         orderCurrency = "INR"
+        #         paymentOrder = client.order.create(dict(amount=orderAmount,currency=orderCurrency,payment_capture=1))
+        #         paymentId = paymentOrder['id']
+        #         checkout.paymentmode=1
+        #         checkout.save()
+        #         return render(Request,"pay.html",{
+        #             "amount":orderAmount,
+        #             "displayAmount":checkout.total,
+        #             "api_key":settings.RAZORPAY_API_KEY,
+        #             "order_id":paymentId,
+        #             "User":buyer,
+        #             "id":checkout.id
+        #         })
+        return render(Request,"checkout.html",{'buyer':buyer,'total':total,'shipping':shipping,'subtotal':subtotal,'cart':cart})
+    except:
+        return HttpResponseRedirect("/admin/")
 
-       return render(Request,"checkout.html",{'buyer':buyer,'cart':cart,'subtotal':subtotal,'shipping':shipping,'total':total})
-   except:
-       return HttpResponseRedirect("/admin/")   
 
 
 # function for confirmationpage
