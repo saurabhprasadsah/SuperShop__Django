@@ -236,6 +236,7 @@ def updateCartPage(Request,id,op):
 #    except:
 #        return HttpResponseRedirect("/admin/")   
 
+#You are authenticated as Rajesh, but are not authorized to access this page. Would you like to login to a different account?
 
 @login_required(login_url="/login/")
 def checkoutPage(Request):
