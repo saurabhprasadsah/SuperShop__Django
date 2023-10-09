@@ -250,7 +250,7 @@ def contactPage(Request):
 
 
 # function for loginpage
-# login the user
+# login the user id
 def loginPage(Request):
     if Request.method == "POST":
         username = Request.POST.get("username")
