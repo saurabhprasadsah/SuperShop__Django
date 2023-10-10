@@ -197,7 +197,6 @@ def updateCartPage(Request,id,op):
 # function for checkoutpage and billing total
 # use for the decorator function and wrapper function
 #You are authenticated as Rajesh, but are not authorized to access this page. Would you like to login to a different account?
-
 @login_required(login_url="/login/")
 def checkoutPage(Request):
    try:
