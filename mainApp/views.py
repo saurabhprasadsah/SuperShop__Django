@@ -92,13 +92,13 @@ def shopPage(Request, mc, sc, br):
     )
 
 
-# function for aboutpage
+# Function for Aboutpage
 def aboutPage(Request):
     return render(Request, "about.html")
 
 
-#function will be addtocartpage
-# add cart the page
+# Function will be addtocartpage
+# Add cart the page
 def addtocartPage(Request):
     if(Request.method == "POST"):   
         cart = Request.session.get('cart', None)
@@ -138,8 +138,8 @@ def addtocartPage(Request):
 
 
     
-# function for only cartpage 
-# use the decorator function 
+# Function for only Cartpage 
+# Use the Decorator Function 
 @login_required(login_url="/login/")
 def cartPage(Request):
     cart = Request.session.get('cart', None)
@@ -157,8 +157,8 @@ def cartPage(Request):
     return render(Request, "cart.html",{'cart':cart,'subtotal':subtotal,'shipping':shipping,'total':total})
 
 
-#function will be deletecartpage
-# delete single cart page
+# Function will be deletecartpage
+# Delete single cart page
 def deletecartPage(Request,id):
     cart = Request.session.get('cart',None)
     if(cart):
