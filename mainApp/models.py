@@ -75,7 +75,7 @@ class Wishlist(models.Model):
           return str(self.id)+" / "+self.buyer.username
     
 
-OrderStatusOptions=((0, "order is Place"),
+OrderStatusOptions=((0,"order is Place"),
                    (1,"order is Packed"),
                    (2,"order is Dispatched"),
                    (3,"Dispatched"),
@@ -108,24 +108,13 @@ class Checkout(models.Model):
 
 class CheckoutProduct(models.Model):
     id = models.AutoField(primary_key=True)
-    checkout= models.ForeignKey(Checkout,on_delete=models.CASCADE)
+    checkout = models.ForeignKey(Checkout,on_delete=models.CASCADE)
     product= models.ForeignKey(Product, on_delete=models.CASCADE)
-    qty =models.IntegerField()
+    qty = models.IntegerField()
     total= models.ImageField()
 
     def __str__(self):
         return str(self.id)
-
-
-
-
-
-
-
-
-
-
-
 
 
 
