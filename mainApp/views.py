@@ -141,7 +141,7 @@ def addtocartPage(Request):
 
     
 # Function for only Cartpage 
-# Use the Decorator Function 
+# Use the Decorator Function for inhance the cartpage function
 @login_required(login_url="/login/")
 def cartPage(Request):
     cart = Request.session.get('cart', None)
