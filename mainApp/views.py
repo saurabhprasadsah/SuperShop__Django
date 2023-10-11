@@ -7,6 +7,8 @@ from .models import *
 
 
 # Create your views here...
+# Function for the homepage 
+# Get all the record....
 def homePage(Request):
     products = Product.objects.all().order_by("id")[0:12]
     return render(Request, "index.html", {"products": products})
