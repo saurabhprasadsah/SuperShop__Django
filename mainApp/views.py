@@ -7,7 +7,7 @@ from .models import *
 
 
 # Create your views here...
-# Function for the homepage 
+# Function for the homepage...
 # Get all the record....
 def homePage(Request):
     products = Product.objects.all().order_by("id")[0:12]
@@ -74,11 +74,9 @@ def shopPage(Request, mc, sc, br):
     maincategory = Maincategory.objects.all().order_by("-id")
     subcategory = Subcategory.objects.all().order_by("-id")
     brand = Brand.objects.all().order_by("-id")
-
     # paginator = Paginator(products, 12)
     # page_number = Request.GET.get("page")
     # page_obj = paginator.get_page(page_number)
-
     return render(
         Request,
         "shop.html",
@@ -96,6 +94,7 @@ def shopPage(Request, mc, sc, br):
 
 
 # Function for Aboutpage
+# All the details for aboutpage
 def aboutPage(Request):
     return render(Request, "about.html")
 
