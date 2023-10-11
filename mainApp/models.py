@@ -50,6 +50,7 @@ class Product(models.Model):
         return str(self.id)+" /"+self.name
     
 
+
 class Buyer(models.Model):
       id = models.AutoField(primary_key=True)
       name = models.CharField(max_length=30)

@@ -12,10 +12,10 @@ def homePage(Request):
     return render(Request, "index.html", {"products": products})
 
 
-#Function for shoppage
-#mc means maincategory  
-#sc means subctegory
-#br means brnad
+# Function for shoppage
+# Mc means maincategory  
+# Sc means subctegory
+# Br means brnad
 def shopPage(Request, mc, sc, br):
     if mc == "All" and sc == "All" and br == "All":
         products = Product.objects.all().order_by("-id")
@@ -90,6 +90,7 @@ def shopPage(Request, mc, sc, br):
             "br": br,
         },
     )
+
 
 
 # Function for Aboutpage
@@ -169,8 +170,8 @@ def deletecartPage(Request,id):
     return HttpResponseRedirect("/cart/")
 
 
-#function willbe updatecartpage
-#use id and op
+#Function willbe updatecartpage
+#Use ID and OP
 def updateCartPage(Request,id,op):
     cart = Request.session.get('cart',None)
     if(cart):
@@ -190,8 +191,6 @@ def updateCartPage(Request,id,op):
     else:
         pass
     return HttpResponseRedirect("/cart/")
-
-
 
 
 # function for checkoutpage and billing total
