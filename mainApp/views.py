@@ -241,23 +241,23 @@ def checkoutPage(Request):
 # function for confirmationpage
 @login_required(login_url="/login/")
 def confirmationPage(Request):
-    try:
-        buyer = Buyer.objects.get(username = Request.user.username)
-        cart = Request.session.get('cart', None)
+    #try:
+        buyer = Buyer.objects.get(username=Request.user.username)
+        checkout= Checkout.objects.filter(buyer=buyer).order_by("-id").first()
+        print(checkout)
+        cart = CheckoutProduct.objects.filter(checkout= Checkout.objects.get(id=checkout.id))
         subtotal = 0
         shipping = 0
         total = 0
-        if(cart):
-            for value in cart.values():
-                subtotal= subtotal + value['total']
-            if(subtotal>0 and subtotal<1000):
+        for item in cart:
+            subtotal= subtotal + item.total
+        if(subtotal>0 and subtotal<1000):
                 shipping =150
-            total = subtotal+shipping
-        Request.session['cart']={} 
-        return render(Request,"confirmation.html", {'cart':cart,'subtotal':subtotal,'shipping':shipping,'total':total,buyer:'buyer'})
+        total = subtotal+shipping
+        return render(Request,"confirmation.html",{'cart':cart,'subtotal':subtotal,'shipping':shipping,'total':total,buyer:'buyer'})
 
-    except:
-       return HttpResponseRedirect("/admin/")
+    #except:
+     #   return HttpResponseRedirect("/admin/")
 
 
 # function for contactpage
@@ -342,7 +342,8 @@ def updateProfilePage(Request):
         buyer.save()
         return HttpResponseRedirect("/profile")
     return render(Request, "update-profile.html", {"buyer": buyer})
-
+# In this is updateprofilepage the when updateprofilepage will be done then it will be 
+# the page will be return to the profile page.
 
 # Function will be single product
 def singleProduct(Request, id):
