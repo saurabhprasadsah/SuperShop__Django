@@ -197,7 +197,7 @@ def updateCartPage(Request,id,op):
 # function for checkoutpage and billing total
 # use for the decorator function and wrapper function
 #You are authenticated as Rajesh, but are not authorized to access this page. Would you like to login to a different account?
-@login_required(login_url="/login/")
+#@login_required(login_url="/login/")
 def checkoutPage(Request):
    try:
        buyer = Buyer.objects.get(username=Request.user.username)
@@ -220,7 +220,7 @@ def checkoutPage(Request):
             checkout.total = total
             checkout.shipping = shipping
             checkout.save()
-
+            
             for key,value in cart.items():
                 p = Product.objects.get(id= int(key))
                 cp = CheckoutProduct()
@@ -239,7 +239,7 @@ def checkoutPage(Request):
 
 
 # function for confirmationpage
-@login_required(login_url="/login/")
+#@login_required(login_url="/login/")
 def confirmationPage(Request):
     try:
         buyer = Buyer.objects.get(username = Request.user.username)
