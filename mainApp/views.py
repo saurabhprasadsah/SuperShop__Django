@@ -241,7 +241,7 @@ def checkoutPage(Request):
 # function for confirmationpage
 @login_required(login_url="/login/")
 def confirmationPage(Request):
-   # try:
+    try:
         buyer = Buyer.objects.get(username = Request.user.username)
         cart = Request.session.get('cart', None)
         subtotal = 0
@@ -256,8 +256,8 @@ def confirmationPage(Request):
         Request.session['cart']={} 
         return render(Request,"confirmation.html", {'cart':cart,'subtotal':subtotal,'shipping':shipping,'total':total,buyer:'buyer'})
 
-    #except:
-     #  return HttpResponseRedirect("/admin/")
+    except:
+       return HttpResponseRedirect("/admin/")
 
 
 # function for contactpage
