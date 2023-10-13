@@ -243,8 +243,19 @@ def checkoutPage(Request):
 def confirmationPage(Request):
     try:
         buyer = Buyer.objects.get(username = Request.user.username)
-        return render(Request,"confirmation.html")
-    
+        cart = Request.session.get('cart', None)
+        subtotal = 0
+        shipping = 0
+        total = 0
+        if(cart):
+            for value in cart.values():
+                subtotal= subtotal + value['total']
+            if(subtotal>0 and subtotal<1000):
+                shipping =150
+            total = subtotal+shipping
+        Request.session['cart']={} 
+        return render(Request,"confirmation.html", {'cart':cart,'subtotal':subtotal,'shipping':shipping,'total':total,buyer:'buyer'})
+
     except:
        return HttpResponseRedirect("/admin/")
 
