@@ -232,7 +232,6 @@ def checkoutPage(Request):
 
             Request.session['/cart/']= {} 
             return HttpResponseRedirect("/confirmation/")    
-
        return render(Request,"checkout.html",{'buyer':buyer,'cart':cart,'subtotal':subtotal,'shipping':shipping,'total':total})
    except:
        return HttpResponseRedirect("/admin/")   
@@ -242,7 +241,12 @@ def checkoutPage(Request):
 # function for confirmationpage
 @login_required(login_url="/login/")
 def confirmationPage(Request):
-    return render(Request, "confirmation.html")
+    try:
+        buyer = Buyer.objects.get(username = Request.user.username)
+        return render(Request,"confirmation.html")
+    
+    except:
+       return HttpResponseRedirect("/admin/")
 
 
 # function for contactpage
@@ -370,6 +374,3 @@ def logoutPage(Request):
     return HttpResponseRedirect("/login/")
 
 
-@login_required(login_url="/login/")
-def confirmationPage(Request):
-    return render(Request,"confirmation.html")
