@@ -38,6 +38,7 @@ urlpatterns = [
 
 
     path('confirmation/',mainApp.confirmationPage, name="confirmation"),
+    
     path('contact/',mainApp.contactPage, name="contact"),
     path('login/',mainApp.loginPage, name="login"),
     path('logout/',mainApp.logoutPage, name="logout"),

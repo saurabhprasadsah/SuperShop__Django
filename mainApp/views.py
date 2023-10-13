@@ -368,3 +368,8 @@ def deletewishlist(Request, id):
 def logoutPage(Request):
     logout(Request)
     return HttpResponseRedirect("/login/")
+
+
+@login_required(login_url="/login/")
+def confirmationPage(Request):
+    return render(Request,"confirmation.html")
