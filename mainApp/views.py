@@ -352,8 +352,8 @@ def singleProduct(Request, id):
 
 
 
-# function will be addtowishlist
-# use for the decorator function
+# function will be addtowishlists
+# use for the decorator function inhance the function
 @login_required(login_url="/login/")
 def addtowishlistPage(Request, id):
     buyer = Buyer.objects.get(username=Request.user.username)
