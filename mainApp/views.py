@@ -239,6 +239,7 @@ def checkoutPage(Request):
 
 
 # function for confirmationpage
+# use for the decorator function and wrapper function!
 @login_required(login_url="/login/")
 def confirmationPage(Request):
     #try:
