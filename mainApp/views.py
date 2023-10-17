@@ -237,6 +237,7 @@ def checkoutPage(Request):
        return HttpResponseRedirect("/admin/")   
 
 
+    
 
 # function for confirmationpage
 # use for the decorator function and wrapper function!
