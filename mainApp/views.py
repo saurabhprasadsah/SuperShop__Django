@@ -312,7 +312,7 @@ def signupPage(Request):
 
 
 # function of profilepage
-# use for the decorator function 
+# use for the decorator function inhance the functionality!
 @login_required(login_url="/login/")
 def profilePage(Request):
     if Request.user.is_superuser:
