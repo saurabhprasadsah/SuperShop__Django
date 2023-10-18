@@ -377,6 +377,24 @@ def deletewishlist(Request, id):
     return HttpResponseRedirect("/profile/")
 
 
+
+def newslatterSubscribePage(Request):
+    if(Request.method=='POST'):
+        email = Request.POST.get("email")
+        n = Newslatter()
+        n.email = email
+        try:
+            n.save()
+            success(Request,"Thanks to subscribe Our Newslatter Service !!!")
+        except:
+            error(Request,"Your Email Id is Already Subscribed!!!")    
+        return HttpResponseRedirect("/")    
+
+    else:
+       return HttpResponseRedirect("/")    
+
+
+
 # function for contactpage
 def contactPage(Request):
     return render(Request, "contact.html")

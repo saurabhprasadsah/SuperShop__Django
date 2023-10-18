@@ -58,4 +58,7 @@ urlpatterns = [
 
     path('single-product/<int:id>',mainApp.singleProduct, name="single-Product"),
 
+    path('/newslatter/subscribe',mainApp.newslatterSubscribePage, name="newslatter-subscribe"),
+
+
 ]+static(settings.MEDIA_URL,document_root = settings.MEDIA_ROOT) 
