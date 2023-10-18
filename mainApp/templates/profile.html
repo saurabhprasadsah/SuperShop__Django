@@ -101,24 +101,30 @@
     {% endif %}
 
     <h5 class="text-center mt-3 bg-secondary p-2 text-light">order History Section</h5>
-    {% if order %}
+    {% if orders %}
     <div class="row">
-        {% for item in order %}
+        {% for item in orders %}
         <div class="col-md-3">
-            <table></table>
+            <table>
+                <tr>
+                    <th>Order Id</th>
+                    <td>{{item.checkout.id}}</td>
+                </tr>
+
+            </table>
 
         </div>
-        <div class="col-md-3">
+        <div class="col-md-9">
 
         </div>
         {% endfor %}
 
-        <div>
+    <div>
 
     {% else %}
     <p class="text-center mt-3">No order History Found!!</p>
     {% endif %}
 
-    </div>
+</div>
 
     {% endblock %}

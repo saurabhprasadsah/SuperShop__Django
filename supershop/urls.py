@@ -34,9 +34,6 @@ urlpatterns = [
     
     path('update-cart/<str:id>/<str:op>/',mainApp.updateCartPage, name="update-cart"),
 
-
-
-
     path('confirmation/',mainApp.confirmationPage, name="confirmation"),
     
     path('contact/',mainApp.contactPage, name="contact"),
