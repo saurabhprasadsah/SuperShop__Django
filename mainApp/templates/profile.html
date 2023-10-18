@@ -105,7 +105,7 @@
     <div class="row">
         {% for item in orders %}
         <div class="col-md-3">
-            <table>
+            <table class="table table-bordered">
                 <tr>
                     <th>Order Id</th>
                     <td>{{item.checkout.id}}</td>
@@ -124,15 +124,15 @@
                 </tr>
                 <tr>
                     <th>Subtotal</th>
-                    <td>{{item.checkout.subtotal}}</td>
+                    <td>&#8377;{{item.checkout.subtotal}}</td>
                 </tr>
                 <tr>
                     <th>Shipping</th>
-                    <td>{{item.checkout.shipping}}</td>
+                    <td>&#8377;{{item.checkout.shipping}}</td>
                 </tr>
                 <tr>
                     <th>Total</th>
-                    <td>{{item.checkout.id}}</td>
+                    <td>&#8377;{{item.checkout.total}}</td>
                 </tr>
                 <tr>
                     <th>Date</th>
@@ -141,16 +141,39 @@
             </table>
         </div>
         <div class="col-md-9">
+            <div class="table-responsive">
+                <table class="table">
+                    <tr>
+                        <th></th>
+                        <th>Name</th>
+                        <th>Brand/Color/Size</th>
+                        <th>Price</th>
+                        <th>Qty</th>
+                        <th>Total</th>
+                    </tr>
+                    {% for p in item.cp %}
+                    <tr>
+                        <td><img src="{{p.product.pic1.url}}" height="80px" width="80px" class="rounded" alt=""></td>
+                        <td>{{p.product.name}}</td>
+                        <td>{{p.product.brand}}/{{p.product.color}}/{{p.product.size}}</td>
+                        <td>&#8377;{{p.product.finalprice}}</td>
+                        <td>{{p.qty}}</td>
+                        <td>&#8377;{{p.total}}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+
 
         </div>
         {% endfor %}
 
-    <div>
+        <div>
 
-    {% else %}
-    <p class="text-center mt-3">No order History Found!!</p>
-    {% endif %}
+            {% else %}
+            <p class="text-center mt-3">No order History Found!!</p>
+            {% endif %}
 
-</div>
+        </div>
 
-    {% endblock %}
+        {% endblock %}

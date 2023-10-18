@@ -311,7 +311,7 @@ def profilePage(Request):
         return HttpResponseRedirect("/admin/")
     buyer = Buyer.objects.get(username=Request.user.username)
     wishlist = Wishlist.objects.filter(buyer=buyer)
-    checkout = Checkout.objects.filter(buyer=buyer)
+    checkout = Checkout.objects.filter(buyer=buyer) 
     orders =[]
     for item in checkout:
         cp = CheckoutProduct.objects.filter(checkout = item)
