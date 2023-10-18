@@ -389,7 +389,6 @@ def newslatterSubscribePage(Request):
         except:
             error(Request,"Your Email Id is Already Subscribed!!!")    
         return HttpResponseRedirect("/")    
-
     else:
        return HttpResponseRedirect("/")    
 
