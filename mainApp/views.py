@@ -92,8 +92,6 @@ def shopPage(Request, mc, sc, br):
     )
 
 
-
-# Function for Aboutpage
 # All the details for aboutpage
 def aboutPage(Request):
     return render(Request, "about.html")
@@ -160,7 +158,6 @@ def cartPage(Request):
 
 
 # Function will be deletecartpage
-# Delete single cart page
 def deletecartPage(Request,id):
     cart = Request.session.get('cart',None)
     if(cart):
@@ -172,7 +169,6 @@ def deletecartPage(Request,id):
 
 
 #Function willbe updatecartpage
-#Use ID and OP
 def updateCartPage(Request,id,op):
     cart = Request.session.get('cart',None)
     if(cart):
@@ -196,7 +192,6 @@ def updateCartPage(Request,id,op):
 
 # function for checkoutpage and billing total
 # use for the decorator function and wrapper function
-#You are authenticated as Rajesh, but are not authorized to access this page. Would you like to login to a different account?
 @login_required(login_url="/login/")
 def checkoutPage(Request):
    try:
@@ -236,7 +231,6 @@ def checkoutPage(Request):
    except:
        return HttpResponseRedirect("/admin/")   
 
-
     
 
 # function for confirmationpage
@@ -261,10 +255,6 @@ def confirmationPage(Request):
     #except:
      #   return HttpResponseRedirect("/admin/")
 
-
-# function for contactpage
-def contactPage(Request):
-    return render(Request, "contact.html")
 
 
 # function for loginpage
@@ -347,6 +337,7 @@ def updateProfilePage(Request):
 # In this is updateprofilepage the when updateprofilepage will be done then it will be 
 # the page will be return to the profile page.
 
+
 # Function will be single product
 def singleProduct(Request, id):
     product = Product.objects.get(id=id)
@@ -379,6 +370,11 @@ def deletewishlist(Request, id):
     except:
         pass
     return HttpResponseRedirect("/profile/")
+
+
+# function for contactpage
+def contactPage(Request):
+    return render(Request, "contact.html")
 
 
 # logoutPage
