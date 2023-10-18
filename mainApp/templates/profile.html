@@ -100,7 +100,7 @@
     <p class="text-center mt-3">No Items in Wishlist</p>
     {% endif %}
 
-    <h5 class="text-center mt-3 bg-secondary p-2 text-light">order History Section</h5>
+    <h5 class="text-center mt-3 bg-secondary p-2 text-light">Order History Section</h5>
     {% if orders %}
     <div class="row">
         {% for item in orders %}
@@ -110,9 +110,35 @@
                     <th>Order Id</th>
                     <td>{{item.checkout.id}}</td>
                 </tr>
-
+                <tr>
+                    <th>Order status</th>
+                    <td>{{item.checkout.orderstatus}}</td>
+                </tr>
+                <tr>
+                    <th>Payment Mode</th>
+                    <td>{{item.checkout.payementmode}}</td>
+                </tr>
+                <tr>
+                    <th>Payment Status</th>
+                    <td>{{item.checkout.paymentstatus}}</td>
+                </tr>
+                <tr>
+                    <th>Subtotal</th>
+                    <td>{{item.checkout.subtotal}}</td>
+                </tr>
+                <tr>
+                    <th>Shipping</th>
+                    <td>{{item.checkout.shipping}}</td>
+                </tr>
+                <tr>
+                    <th>Total</th>
+                    <td>{{item.checkout.id}}</td>
+                </tr>
+                <tr>
+                    <th>Date</th>
+                    <td>{{item.checkout.date}}</td>
+                </tr>
             </table>
-
         </div>
         <div class="col-md-9">
 
