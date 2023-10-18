@@ -378,6 +378,7 @@ def deletewishlist(Request, id):
 
 
 # function for newslatter subscribe!!!
+# email subscribtion 
 def newslatterSubscribePage(Request):
     if(Request.method=='POST'):
         email = Request.POST.get("email")
