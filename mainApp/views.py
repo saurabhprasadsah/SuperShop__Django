@@ -377,7 +377,7 @@ def deletewishlist(Request, id):
     return HttpResponseRedirect("/profile/")
 
 
-
+# function for newslatter subscribe!!!
 def newslatterSubscribePage(Request):
     if(Request.method=='POST'):
         email = Request.POST.get("email")
