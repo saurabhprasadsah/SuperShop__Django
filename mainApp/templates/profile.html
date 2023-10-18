@@ -1,6 +1,8 @@
 {% extends 'index.html' %}
 {% load static %}
 
+{% load myCustomFilters %}
+
 {% block title %}
 <title> SuperShop | Buyer Profile</title>
 {% endblock %}
@@ -163,13 +165,9 @@
                     {% endfor %}
                 </table>
             </div>
-
-
         </div>
         {% endfor %}
-
         <div>
-
             {% else %}
             <p class="text-center mt-3">No order History Found!!</p>
             {% endif %}
