@@ -100,36 +100,25 @@
     <p class="text-center mt-3">No Items in Wishlist</p>
     {% endif %}
 
-    <h5 class="text-center mt-3 bg-secondary p-2 text-light">Wishlist Section</h5>
-    {% if wishlist %}
-    <div class="table-responsive">
-        <table class="table">
-            <tr>
-                <th>Product image</th>
-                <th>Name</th>
-                <th>Brand/Color/Size</th>
-                <th>Price</th>
-                <th>shopping-cart</th>
-                <th>Delete item</th>
-            </tr>
-            {% for item in wishlist %}
-            <tr>
-                <td><img src="{{item.product.pic1.url}}" height="80px" width="80px" class="rounded" alt=""></td>
-                <td>{{item.product.name}}</td>
-                <td>{{item.product.brand}}/{{item.product.color}}/{{item.product.size}}</td>
-                <td>&#8377;{{item.product.finalprice}}</td>
-                <td><a href="/single-product/{{item.product.id}}/"><i class="fa fa-shopping-cart"></i></a></td>
-                <td><a href="/delete-wishlist/{{item.id}}/"><i class="fa fa-trash text-danger"></i></a></td>
-            </tr>
-            {% endfor %}
-        </table>
-    </div>
+    <h5 class="text-center mt-3 bg-secondary p-2 text-light">order History Section</h5>
+    {% if order %}
+    <div class="row">
+        {% for item in order %}
+        <div class="col-md-3">
+            <table></table>
+
+        </div>
+        <div class="col-md-3">
+
+        </div>
+        {% endfor %}
+
+        <div>
+
     {% else %}
-    <p class="text-center mt-3">No Items in Wishlist</p>
+    <p class="text-center mt-3">No order History Found!!</p>
     {% endif %}
 
+    </div>
 
-
-
-</div>
-{% endblock %}
+    {% endblock %}
