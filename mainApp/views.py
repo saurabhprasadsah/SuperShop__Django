@@ -400,7 +400,7 @@ def contactPage(Request):
 
 
 # LogoutPage
-# onlY use for the logout page
+# only use for the Logout page!
 def logoutPage(Request):
     logout(Request)
     return HttpResponseRedirect("/login/")
