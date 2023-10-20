@@ -275,7 +275,7 @@ def loginPage(Request):
     return render(Request, "login.html")
 
 
-# function for  signuppage
+# Function for  Signuppage
 def signupPage(Request):
     if Request.method == "POST":
         password = Request.POST.get("password")
