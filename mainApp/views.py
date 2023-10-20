@@ -393,14 +393,14 @@ def newslatterSubscribePage(Request):
     else:
        return HttpResponseRedirect("/")    
 
-# contact Page
-# function for contactpage
+# Contact Page
+# Function for contactpage
 def contactPage(Request):
     return render(Request, "contact.html")
 
 
-# logoutPage
-# onlu use for the logout page
+# LogoutPage
+# onlY use for the logout page
 def logoutPage(Request):
     logout(Request)
     return HttpResponseRedirect("/login/")
