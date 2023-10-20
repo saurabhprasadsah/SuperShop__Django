@@ -303,8 +303,8 @@ def signupPage(Request):
     return render(Request, "signup.html")
 
 
-# function of profilepage
-# use for the decorator function inhance the functionality!
+# Function of profilepage
+# Use for the decorator function inhance the functionality!
 @login_required(login_url="/login/")
 def profilePage(Request):
     if Request.user.is_superuser:
@@ -319,8 +319,8 @@ def profilePage(Request):
     return render(Request, "profile.html", {"buyer": buyer, "wishlist": wishlist, 'orders':orders})
 
 
-# function of updateprofilepage!
-# use for the decorator function inhance the functionality!
+# Function of updateprofilepage!
+# Use for the decorator function inhance the functionality!
 @login_required(login_url="/login/")
 def updateProfilePage(Request):
     if Request.user.is_superuser:
@@ -341,6 +341,7 @@ def updateProfilePage(Request):
     return render(Request, "update-profile.html", {"buyer": buyer})
 # In this is updateprofilepage the when updateprofilepage will be done then it will be 
 # the page will be return to the profile page.
+
 
 
 # Function will be single product
