@@ -393,8 +393,7 @@ def newslatterSubscribePage(Request):
     else:
        return HttpResponseRedirect("/")    
 
-
-
+# contact Page
 # function for contactpage
 def contactPage(Request):
     return render(Request, "contact.html")
